@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual de Projetos & Operações B2B · 49 Educação · v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A; --bg2:#101010; --panel:#151515; --panel2:#1A1A1A;
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+  --ink:#F3F1EC; --ink2:#B7B3AC; --muted:#7C7872;
+  --orange:#FF4F11; --orange2:#E05A1A; --orangeglow:rgba(255,79,17,.20);
+  /* categorias */
+  --c-acel:#FF4F11; --c-prei:#F59E0B; --c-capt:#38BDF8;
+  --c-capa:#C084FC; --c-prem:#FACC15; --c-soft:#2DD4BF;
+  --shadow:0 24px 60px -28px rgba(0,0,0,.9);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'DM Mono',ui-monospace,monospace; font-weight:400;
+  font-size:14.5px; line-height:1.6; letter-spacing:.1px;
+  -webkit-font-smoothing:antialiased;
+}
+/* grão sutil + grade de fundo */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.4;
+  background:
+    linear-gradient(transparent 0 39px, var(--line) 39px 40px) 0 0/100% 40px,
+    radial-gradient(1200px 600px at 80% -10%, var(--orangeglow), transparent 60%);
+  mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);
+}
+h1,h2,h3,h4,.syne{font-family:'Syne',sans-serif; letter-spacing:-.01em; font-weight:800; line-height:1.02}
+a{color:inherit}
+::selection{background:var(--orange); color:#0A0A0A}
+.wrap{max-width:1180px; margin:0 auto; padding:0 26px; position:relative; z-index:1}
+.mono-label{font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--muted)}
+
+/* ====== NAV ====== */
+.topnav{
+  position:sticky; top:0; z-index:50; backdrop-filter:blur(12px);
+  background:rgba(10,10,10,.82); border-bottom:1px solid var(--line);
+}
+.topnav .wrap{display:flex; align-items:center; gap:22px; height:60px}
+.brand{display:flex; align-items:center; gap:11px; font-family:'Syne'; font-weight:800; letter-spacing:-.02em}
+.brand .dot{width:11px; height:11px; background:var(--orange); border-radius:3px; box-shadow:0 0 16px var(--orange)}
+.brand b{font-size:16px}
+.brand span{font-size:11px; color:var(--muted); font-family:'DM Mono'; letter-spacing:.2em}
+.navlinks{display:flex; gap:4px; margin-left:auto; flex-wrap:wrap}
+.navlinks button{
+  background:none; border:1px solid transparent; color:var(--ink2); cursor:pointer;
+  font-family:'DM Mono'; font-size:12px; padding:7px 11px; border-radius:8px; letter-spacing:.04em;
+  transition:.15s;
+}
+.navlinks button:hover{color:var(--ink); background:var(--panel)}
+.navlinks button.active{color:var(--orange); border-color:rgba(255,79,17,.35); background:rgba(255,79,17,.07)}
+@media(max-width:880px){.navlinks{display:none}}
+
+/* ====== HERO ====== */
+.hero{padding:78px 0 56px; position:relative; overflow:hidden}
+.hero .kick{display:inline-flex; align-items:center; gap:9px; padding:6px 13px; border:1px solid var(--line2);
+  border-radius:999px; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink2); margin-bottom:26px}
+.hero .kick i{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--orangeglow)}50%{opacity:.5;box-shadow:0 0 0 8px transparent}}
+.hero h1{font-size:clamp(42px,8vw,92px); margin:0 0 6px; line-height:.94}
+.hero h1 em{font-style:normal; color:var(--orange); display:block}
+.hero .sub{max-width:620px; color:var(--ink2); font-size:15px; margin:22px 0 0}
+.hero .meta{display:flex; gap:30px; flex-wrap:wrap; margin-top:40px; padding-top:26px; border-top:1px solid var(--line)}
+.stat .n{font-family:'Syne'; font-weight:800; font-size:40px; color:var(--ink); line-height:1}
+.stat .l{font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:6px}
+.hashtag{position:absolute; right:-10px; top:48px; font-family:'Syne'; font-weight:800;
+  font-size:clamp(48px,12vw,150px); color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.06);
+  pointer-events:none; user-select:none; transform:rotate(90deg); transform-origin:right top; opacity:.7}
+@media(max-width:880px){.hashtag{display:none}}
+
+/* ====== SECTION SHELL ====== */
+section.block{padding:60px 0; border-top:1px solid var(--line); scroll-margin-top:70px}
+.sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:34px; flex-wrap:wrap}
+.sec-head .idx{font-family:'Syne'; font-weight:800; font-size:13px; color:var(--orange); letter-spacing:.1em}
+.sec-head h2{font-size:clamp(28px,4.4vw,46px); margin:8px 0 0}
+.sec-head p{max-width:460px; color:var(--ink2); font-size:13px; margin:0}
+
+/* ====== CARDS GENERIC ====== */
+.card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+.grid{display:grid; gap:16px}
+
+/* PILARES */
+.pilares{grid-template-columns:repeat(auto-fill,minmax(238px,1fr))}
+.pilar{position:relative; overflow:hidden}
+.pilar .num{font-family:'Syne'; font-weight:800; font-size:13px; color:var(--orange)}
+.pilar h4{font-size:17px; margin:8px 0 7px}
+.pilar p{margin:0; color:var(--ink2); font-size:12.5px}
+.pilar.extra{border-style:dashed; border-color:var(--line2)}
+
+/* CATEGORIAS */
+.cats{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.cat{border-left:3px solid var(--cc); cursor:pointer; transition:.18s}
+.cat:hover{transform:translateY(-3px); border-color:var(--line2); border-left-color:var(--cc); box-shadow:var(--shadow)}
+.cat .ctag{display:inline-block; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--cc); font-weight:500}
+.cat h4{font-size:20px; margin:9px 0 8px}
+.cat .desc{color:var(--ink2); font-size:12.5px; margin:0 0 14px}
+.cat .kv{display:flex; gap:8px; font-size:11.5px; margin-bottom:6px}
+.cat .kv b{color:var(--muted); min-width:96px; font-weight:400; letter-spacing:.05em}
+.cat .kv span{color:var(--ink2)}
+.cat .port{margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink2)}
+.cat .port b{color:var(--cc); font-weight:500}
+.cat .gohint{margin-top:12px; font-size:10.5px; color:var(--muted); letter-spacing:.05em}
+.cat:hover .gohint{color:var(--cc)}
+
+/* TIMES */
+.times{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.team{cursor:pointer; transition:.18s; border-top:3px solid var(--orange)}
+.team:hover{transform:translateY(-3px); box-shadow:var(--shadow)}
+.team .who{font-size:11px; color:var(--muted); margin:2px 0 14px}
+.team h4{font-size:19px; margin:0}
+.team ul{list-style:none; padding:0; margin:0 0 14px}
+.team ul li{font-size:12px; color:var(--ink2); padding-left:16px; position:relative; margin-bottom:3px}
+.team ul li::before{content:"›"; position:absolute; left:0; color:var(--orange)}
+.timeline{border-top:1px solid var(--line); padding-top:12px; margin-top:auto}
+.timeline .row{display:grid; grid-template-columns:54px 1fr; gap:10px; font-size:11.5px; margin-bottom:7px}
+.timeline .row b{color:var(--orange); font-weight:500}
+.timeline .row span{color:var(--ink2)}
+.team .cta{margin-top:14px; font-size:10.5px; letter-spacing:.05em; color:var(--muted)}
+.team:hover .cta{color:var(--orange)}
+
+/* ====== CATÁLOGO ====== */
+.toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:22px}
+.search{flex:1; min-width:200px; display:flex; align-items:center; gap:9px; background:var(--panel);
+  border:1px solid var(--line); border-radius:10px; padding:9px 13px}
+.search input{flex:1; background:none; border:0; color:var(--ink); font-family:'DM Mono'; font-size:13px; outline:none}
+.search input::placeholder{color:var(--muted)}
+.chips{display:flex; gap:6px; flex-wrap:wrap}
+.chip{background:var(--panel); border:1px solid var(--line); color:var(--ink2); cursor:pointer;
+  font-family:'DM Mono'; font-size:11px; padding:7px 12px; border-radius:999px; letter-spacing:.05em; transition:.15s}
+.chip:hover{border-color:var(--line2); color:var(--ink)}
+.chip.on{color:#0A0A0A; font-weight:500}
+.chip[data-cat="Aceleração"].on{background:var(--c-acel); border-color:var(--c-acel)}
+.chip[data-cat="Pré-Incubação"].on{background:var(--c-prei); border-color:var(--c-prei)}
+.chip[data-cat="Captação"].on{background:var(--c-capt); border-color:var(--c-capt)}
+.chip[data-cat="Capacitação"].on{background:var(--c-capa); border-color:var(--c-capa)}
+.chip[data-cat="Premiação"].on{background:var(--c-prem); border-color:var(--c-prem)}
+.chip[data-cat="SoftwareHouse"].on{background:var(--c-soft); border-color:var(--c-soft)}
+.chip.gen.on{background:var(--ink); border-color:var(--ink)}
+.count-note{font-size:11px; color:var(--muted); margin-left:auto; letter-spacing:.05em}
+
+.catalog{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.proj{cursor:pointer; transition:.18s; border-top:3px solid var(--cc); display:flex; flex-direction:column; min-height:200px; position:relative; overflow:hidden}
+.proj:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--line2); border-top-color:var(--cc)}
+.proj .bignum{position:absolute; right:14px; top:8px; font-family:'Syne'; font-weight:800; font-size:46px; color:rgba(255,255,255,.04)}
+.proj.new::after{content:"NOVO"; position:absolute; top:14px; right:16px; font-size:9px; letter-spacing:.2em;
+  background:var(--orange); color:#0A0A0A; padding:3px 7px; border-radius:4px; font-weight:500}
+.proj .ctag{font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--cc); font-weight:500}
+.proj h4{font-size:18px; margin:9px 0 4px; padding-right:30px}
+.proj .contr{font-size:11px; color:var(--muted); margin-bottom:12px}
+.proj .deliver{font-size:12px; color:var(--ink2); margin:0 0 14px; flex:1}
+.proj .foot{display:flex; gap:7px; flex-wrap:wrap; align-items:center; border-top:1px solid var(--line); padding-top:12px}
+.tag{font-size:10px; letter-spacing:.06em; padding:3px 8px; border-radius:5px; border:1px solid var(--line); color:var(--ink2)}
+.tag.app{border-color:rgba(56,189,248,.4); color:#7dd3fc}
+.tag.noapp{opacity:.5}
+.tag.cs{border-color:rgba(45,212,191,.4); color:#5eead4}
+.tag.val-Alto{border-color:rgba(255,79,17,.5); color:var(--orange)}
+.tag.val-Médio{border-color:rgba(245,158,11,.5); color:#fbbf24}
+.tag.dates{margin-left:auto; color:var(--muted)}
+
+/* ====== MODAL ====== */
+.overlay{position:fixed; inset:0; z-index:100; background:rgba(5,5,5,.78); backdrop-filter:blur(6px);
+  display:none; align-items:flex-start; justify-content:center; padding:40px 18px; overflow-y:auto}
+.overlay.open{display:flex}
+.modal{background:var(--bg2); border:1px solid var(--line2); border-radius:18px; max-width:760px; width:100%;
+  box-shadow:var(--shadow); animation:rise .26s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:0; transform:translateY(20px)}to{opacity:1; transform:none}}
+.modal-top{padding:26px 30px 20px; border-bottom:1px solid var(--line); border-top:4px solid var(--cc); border-radius:18px 18px 0 0; position:relative}
+.modal-top .ctag{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--cc); font-weight:500}
+.modal-top h3{font-size:30px; margin:8px 0 4px}
+.modal-top .contr{font-size:12px; color:var(--muted)}
+.modal-close{position:absolute; top:20px; right:22px; background:var(--panel); border:1px solid var(--line2);
+  color:var(--ink); width:34px; height:34px; border-radius:9px; cursor:pointer; font-size:16px; line-height:1}
+.modal-close:hover{background:var(--orange); color:#0A0A0A; border-color:var(--orange)}
+.modal-body{padding:24px 30px 30px}
+.frow{display:grid; grid-template-columns:130px 1fr; gap:14px; padding:13px 0; border-bottom:1px dashed var(--line)}
+.frow:last-child{border-bottom:0}
+.frow .k{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:3px}
+.frow .v{color:var(--ink); font-size:13px}
+.frow .v ul{margin:6px 0 0; padding-left:16px}
+.frow .v li{color:var(--ink2); font-size:12px; margin-bottom:2px}
+.who-acts{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px}
+.who-acts .pa{font-size:10.5px; padding:5px 10px; border-radius:7px; background:var(--panel); border:1px solid var(--line2); color:var(--ink2)}
+.who-acts .pa.on{border-color:var(--orange); color:var(--orange)}
+@media(max-width:560px){.frow{grid-template-columns:1fr; gap:4px}}
+
+/* ====== GANTT ====== */
+.gantt{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px 20px 12px; overflow-x:auto}
+.gantt-inner{min-width:880px}
+.gantt-head{display:grid; grid-template-columns:210px 1fr; gap:0; align-items:end; margin-bottom:8px}
+.gmonths{display:grid; grid-template-columns:repeat(12,1fr); position:relative}
+.gmonths span{font-size:10.5px; color:var(--muted); letter-spacing:.12em; text-align:center; border-left:1px solid var(--line); padding-bottom:6px}
+.grow{display:grid; grid-template-columns:210px 1fr; gap:0; align-items:center; height:34px; border-top:1px solid var(--line)}
+.grow:hover{background:rgba(255,255,255,.02)}
+.glabel{font-size:11.5px; color:var(--ink2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-right:12px; display:flex; align-items:center; gap:7px}
+.glabel i{width:7px; height:7px; border-radius:2px; background:var(--cc); flex:none}
+.gtrack{position:relative; height:100%; background-image:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333%-1px),var(--line) calc(8.333%-1px),var(--line) 8.333%)}
+.gbar{position:absolute; top:50%; transform:translateY(-50%); height:15px; border-radius:5px; background:var(--cc);
+  cursor:pointer; transition:.15s; box-shadow:0 2px 8px -2px rgba(0,0,0,.6); min-width:6px}
+.gbar:hover{height:20px; filter:brightness(1.15)}
+.gbar .blab{position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:9.5px; color:rgba(0,0,0,.7); font-weight:500; white-space:nowrap; pointer-events:none}
+.today-line{position:absolute; top:-4px; bottom:0; width:2px; background:var(--orange); z-index:5; box-shadow:0 0 10px var(--orange)}
+.today-line::after{content:"HOJE"; position:absolute; top:-16px; left:50%; transform:translateX(-50%); font-size:9px; color:var(--orange); letter-spacing:.15em; white-space:nowrap}
+.gleg{display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; font-size:10.5px; color:var(--ink2)}
+.gleg span{display:inline-flex; align-items:center; gap:6px}
+.gleg i{width:9px;height:9px;border-radius:2px}
+
+/* ATENÇÃO */
+.alerts{grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); margin-top:20px}
+.alert{border-left:3px solid var(--orange)}
+.alert .mo{font-family:'Syne'; font-weight:800; font-size:14px; color:var(--orange); margin-bottom:6px}
+.alert p{margin:0; font-size:12px; color:var(--ink2)}
+
+/* ====== MATRIZ ====== */
+.matrix-wrap{overflow-x:auto; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:6px}
+table.matrix{border-collapse:collapse; width:100%; min-width:680px; font-size:12px}
+table.matrix th, table.matrix td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--line)}
+table.matrix thead th{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:400; position:sticky; top:0; background:var(--panel)}
+table.matrix tbody th{font-weight:400; color:var(--ink); border-left:3px solid var(--cc); padding-left:13px}
+table.matrix td.dot{text-align:center; color:var(--muted)}
+table.matrix td.yes{color:var(--orange); font-weight:500}
+table.matrix tbody tr:hover td, table.matrix tbody tr:hover th{background:rgba(255,79,17,.05)}
+
+/* CARGA FACILITADOR */
+.load{grid-template-columns:1fr; gap:10px; max-width:760px}
+.lrow{display:grid; grid-template-columns:160px 1fr 40px; gap:14px; align-items:center}
+.lrow .nm{font-size:12.5px; color:var(--ink)}
+.lrow .nm small{display:block; color:var(--muted); font-size:10px; letter-spacing:.04em}
+.lbar{height:14px; background:var(--panel2); border-radius:7px; overflow:hidden; border:1px solid var(--line)}
+.lbar i{display:block; height:100%; background:linear-gradient(90deg,var(--orange2),var(--orange)); border-radius:7px}
+.lrow .cn{font-family:'Syne'; font-weight:800; font-size:18px; text-align:right}
+.lrow.hot .cn{color:var(--orange)}
+
+/* PROTOCOLO */
+.steps{counter-reset:s; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.step{position:relative; padding-top:42px}
+.step::before{counter-increment:s; content:counter(s,decimal-leading-zero); position:absolute; top:18px; left:22px;
+  font-family:'Syne'; font-weight:800; font-size:26px; color:var(--orange)}
+.step h4{font-size:15px; margin:0 0 6px}
+.step p{margin:0; font-size:12px; color:var(--ink2)}
+.template{margin-top:20px}
+.template summary{cursor:pointer; font-family:'Syne'; font-weight:700; font-size:16px; padding:18px 22px;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); list-style:none; display:flex; align-items:center; gap:10px}
+.template summary::-webkit-details-marker{display:none}
+.template summary::before{content:"+"; color:var(--orange); font-size:22px; transition:.2s}
+.template[open] summary::before{transform:rotate(45deg)}
+.tpl-body{background:var(--panel); border:1px solid var(--line); border-top:0; border-radius:0 0 var(--radius) var(--radius); padding:22px}
+.tpl-body .fld{padding:11px 0; border-bottom:1px dashed var(--line)}
+.tpl-body .fld .k{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+.tpl-body .fld .ln{height:1px; background:var(--line2); margin-top:14px}
+.tpl-body .opts{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; font-size:12px; color:var(--ink2)}
+
+/* PRINCÍPIO / quotes */
+.principle{background:linear-gradient(135deg,rgba(255,79,17,.08),transparent); border:1px solid rgba(255,79,17,.22);
+  border-radius:var(--radius); padding:30px 32px; margin-top:24px}
+.principle .pl{font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--orange); margin-bottom:12px}
+.principle q{font-family:'Syne'; font-weight:700; font-size:clamp(18px,2.6vw,26px); line-height:1.2; quotes:none}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line); padding:46px 0 60px; margin-top:30px}
+.foot-grid{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; align-items:flex-end}
+footer .big{font-family:'Syne'; font-weight:800; font-size:clamp(28px,5vw,52px); line-height:1}
+footer .meta{font-size:11px; color:var(--muted); text-align:right; line-height:1.9}
+footer .meta b{color:var(--ink2); font-weight:400}
+
+/* helpers */
+.reveal{opacity:0; transform:translateY(18px)}
+.reveal.in{opacity:1; transform:none; transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><b>49</b><span>MANUAL B2B · v2.0</span></div>
+    <div class="navlinks" id="nav"></div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="hashtag">#bea49er</div>
+  <div class="kick"><i></i> Documento vivo · v2.0 · Junho/2026</div>
+  <h1>Livro do jogo<br><em>do setor B2B.</em></h1>
+  <p class="sub">O manual operacional de todos os programas B2B da 49 Educação. Quem é o contratante, o que cada time entrega, em que prazo, e qual é a métrica que define sucesso — tudo cruzado, navegável e pronto para apresentar.</p>
+  <div class="meta" id="hero-stats"></div>
+</header>
+
+<main class="wrap">
+
+<!-- FUNDAMENTOS -->
+<section class="block" id="fundamentos">
+  <div class="sec-head">
+    <div><div class="idx">PARTE I</div><h2>Fundamentos</h2></div>
+    <p>O DNA que se repete em todo projeto B2B: dez pilares de descrição e seis categorias operacionais.</p>
+  </div>
+  <div class="mono-label" style="margin-bottom:14px">Os 10 pilares de uma ficha</div>
+  <div class="grid pilares" id="pilares"></div>
+
+  <div class="principle reveal">
+    <div class="pl">Princípio fundamental</div>
+    <q>"Se o time não consegue descrever um projeto em uma única página, esse projeto vai virar caos. A ficha de uma página é o teste do projeto."</q>
+  </div>
+
+  <div class="mono-label" style="margin:42px 0 14px">As 6 categorias — clique para filtrar o catálogo</div>
+  <div class="grid cats" id="cats"></div>
+</section>
+
+<!-- OPERAÇÃO POR TIME -->
+<section class="block" id="times">
+  <div class="sec-head">
+    <div><div class="idx">PARTE II</div><h2>Operação por time</h2></div>
+    <p>O contrato interno: o que cada função entrega e com qual antecedência. Clique num time para ver onde ele atua.</p>
+  </div>
+  <div class="grid times" id="teams"></div>
+</section>
+
+<!-- CATÁLOGO -->
+<section class="block" id="catalogo">
+  <div class="sec-head">
+    <div><div class="idx">PARTE III</div><h2>Catálogo de projetos</h2></div>
+    <p>Ficha técnica de cada projeto ativo. Filtre, busque e clique para abrir a ficha completa.</p>
+  </div>
+  <div class="toolbar">
+    <label class="search">
+      <span style="color:var(--muted)">⌕</span>
+      <input id="search" type="text" placeholder="Buscar por nome, contratante, facilitador…" aria-label="Buscar projetos">
+    </label>
+    <div class="chips" id="filters"></div>
+  </div>
+  <div class="toolbar" style="margin-top:-6px">
+    <div class="chips" id="filters2"></div>
+    <div class="count-note" id="count-note"></div>
+  </div>
+  <div class="grid catalog" id="catalog"></div>
+</section>
+
+<!-- CALENDÁRIO -->
+<section class="block" id="calendario">
+  <div class="sec-head">
+    <div><div class="idx">PARTE IV</div><h2>Calendário operacional 2026</h2></div>
+    <p>Linha do tempo de todo o portfólio. Onde as barras se acumulam, a agenda aperta.</p>
+  </div>
+  <div class="gantt">
+    <div class="gantt-inner">
+      <div class="gantt-head"><div></div><div class="gmonths" id="gmonths"></div></div>
+      <div id="gantt-rows"></div>
+    </div>
+  </div>
+  <div class="gleg" id="gantt-leg"></div>
+
+  <div class="mono-label" style="margin:36px 0 14px">Pontos de atenção operacional</div>
+  <div class="grid alerts" id="alerts"></div>
+</section>
+
+<!-- VISÕES CRUZADAS -->
+<section class="block" id="cruzamentos">
+  <div class="sec-head">
+    <div><div class="idx">PARTE V</div><h2>Visões cruzadas</h2></div>
+    <p>Como o portfólio se interliga: carga por facilitador e matriz de atuação por time.</p>
+  </div>
+
+  <div class="mono-label" style="margin-bottom:16px">Carga por facilitador — quem é gargalo de agenda</div>
+  <div class="grid load" id="load"></div>
+
+  <div class="mono-label" style="margin:42px 0 16px">Matriz: o que cada time atua em cada projeto</div>
+  <div class="matrix-wrap">
+    <table class="matrix" id="matrix">
+      <thead><tr>
+        <th>Projeto</th><th>Produto&nbsp;&amp;&nbsp;Tech</th><th>Design</th><th>Conteúdo&nbsp;&amp;&nbsp;Roteiro</th><th>Customer&nbsp;Success</th>
+      </tr></thead>
+      <tbody id="matrix-body"></tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:12px">Produto&Tech atua sempre que há APP. Design e Conteúdo atuam em todo programa com facilitação. CS atua sempre que há operação de turma (CS = Sim).</p>
+</section>
+
+<!-- PROTOCOLO -->
+<section class="block" id="protocolo">
+  <div class="sec-head">
+    <div><div class="idx">PARTE VI</div><h2>Protocolo de novo projeto</h2></div>
+    <p>A rotina obrigatória de kickoff. Sem ficha preenchida, o projeto não existe operacionalmente.</p>
+  </div>
+  <div class="grid steps" id="steps"></div>
+
+  <details class="template">
+    <summary>Template de ficha em branco</summary>
+    <div class="tpl-body" id="tpl-body"></div>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="big">Mantenha-o vivo.</div>
+      <p style="color:var(--ink2);font-size:12px;max-width:420px;margin:14px 0 0">Se algo no portfólio mudou e este manual não foi atualizado, ele virou ficção. A cada projeto novo, preencha a ficha (Parte VI) e some ao catálogo.</p>
+    </div>
+    <div class="meta">
+      <div>VERSÃO <b>2.0</b></div>
+      <div>DATA <b>05 de junho de 2026</b></div>
+      <div>DIREÇÃO <b>Tiago Toigo</b></div>
+      <div>PRÓXIMA REVISÃO <b>a cada novo projeto</b></div>
+      <div style="margin-top:10px;color:var(--orange);letter-spacing:.2em">#bea49er</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+/* =================== DADOS =================== */
+const CAT = {
+  "Aceleração":{v:"--c-acel",op:"10 semanas, workshops + mentorias intercalados, App PWA completo, CS robusto, métrica de Leads/Receita.",pub:"Startups/PMEs com CNPJ ativo há mais de 1 ano."},
+  "Pré-Incubação":{v:"--c-prei",op:"Encontros semanais por 10–18 semanas, modelo hub & spoke (centro + polos), Pitch Regional + Pitch Final, App PWA com Gestão de Inscrições.",pub:"Aspirantes a founders ou Startups com CNPJ ativo há menos de 1 ano."},
+  "Captação":{v:"--c-capt",op:"3 workshops + ciclos de mentoria especializada + evento final em SP. CS sem App. Ciclo longo (6+ meses).",pub:"Startups/PMEs em Ideação ou Growth."},
+  "Capacitação":{v:"--c-capa",op:"Workshops + mentorias coletivas. Volume menor, ciclo curto (1–8 semanas). App PWA leve.",pub:"Gestores de Startup regionais ou jovens em faixa específica."},
+  "Premiação":{v:"--c-prem",op:"Ciclo anual. App de Seleção + Avaliação + Logística de evento. Apoio por consultores externos.",pub:"Startups com faturamento ≤ R$4,8Mi/ano."},
+  "SoftwareHouse":{v:"--c-soft",op:"Escopo de App definido com o cliente, entrega em ciclos curtos. Sem CS e sem facilitação.",pub:"O próprio contratante."}
+};
+
+const PROJ = [
+ {n:1,nome:"Prêmio Sebrae",contr:"SEBRAE Nacional",cat:"Premiação",val:"Alto",ini:"01/01",fim:"01/12",dur:"48 semanas",app:true,cs:false,
+  entrega:"Selecionar 1.000 Startups e premiar até 30 durante o Startup Summit.",
+  promessa:"Premiar Startups.",
+  publico:"1.000 Startups com faturamento ≤ R$4,8Mi/ano e CNPJ ativo (não MEI).",
+  estrutura:["Aplicativo de Seleção e Avaliação","Trilha de conteúdo + Workshops de Pitch Deck","App de Gestão de Logística para o Startup Summit","App de Avaliação de Pitches"],
+  appmods:["Seleção","Avaliação","Gestão de Logística"],
+  csscope:["Sem CS próprio — apenas consultores externos auxiliando na execução"],
+  facil:"Rafael Peck · Maicon Douglas · Victor Motta", mentor:"—",
+  metrica:"2.500 Startups inscritas e 30 premiadas."},
+
+ {n:2,nome:"Start Primeiras Vendas",contr:"SEBRAE SP",cat:"Aceleração",val:"Médio",ini:"24/02",fim:"12/05",dur:"10 semanas",app:true,cs:true,
+  entrega:"Ajudar Startups a destravarem o processo comercial e melhorar as primeiras vendas no mercado.",
+  promessa:"Acompanhamento coletivo, CS forte e impacto positivo na receita da empresa.",
+  publico:"150 Startups/PMEs com mais de um ano de CNPJ ativo.",
+  estrutura:["Workshops de 2h às terças","Mentorias de 2h às quintas","10 semanas de encontro","3 grupos de mentoria toda quinta (50 pessoas cada)"],
+  appmods:["Camada Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App (gravação)","Follow-ups WS/mentorias","Grupos dos GTs","Métricas","Gravações","RAE setup inteiro","Dashboarding semanal p/ ERs","Coleta do NPS"],
+  facil:"Tiago Toigo · Victor Motta", mentor:"Victor Motta · Diego Moeller · Giba Lopes",
+  metrica:"Percentual em crescimento de Leads e Receita."},
+
+ {n:3,nome:"BRDE Ventures Labs",contr:"ACATE + BRDE",cat:"Captação",val:"Baixo",ini:"29/04",fim:"17/06",dur:"8 semanas",app:true,cs:true,
+  entrega:"Ajudar Startups a captar investimento.",
+  promessa:"Capacitar Startups para captação de investimento.",
+  publico:"30 Startups em Growth.",
+  estrutura:["8 semanas, 4 sprints","Aula e mentoria intercaladas","Toda quarta, 10h–12h"],
+  appmods:["Camada Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Grupo de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Dashboarding semanal","Coleta do NPS"],
+  facil:"Marcelo Camara · Leandro Piazza", mentor:"—",
+  metrica:"Pitch Deck pronto e NPS acima de 90."},
+
+ {n:4,nome:"Capital Empreendedor — MG",contr:"SEBRAE MG",cat:"Captação",val:"Baixo",ini:"07/05",fim:"25/11",dur:"28 semanas",app:false,cs:true,
+  entrega:"Ajudar Startups e PMEs a captar investimento (estágio Escala).",
+  promessa:"Acompanhamento coletivo, CS forte e impacto direto na estrutura de captação de uma rodada.",
+  publico:"30 Startups/PMEs com CNPJ ativo em Growth.",
+  estrutura:["3 Workshops de 3h cada","Seleção dos pitches","6 Mentorias Comportamentais (3h)","6 Mentorias de Vendas (3h)","2 Mentorias de Jurídico (4h)","2 Mentorias de Finanças (4h)","Jurídico e Finanças intercalados","Evento final presencial (2 dias) com investidores em SP"],
+  appmods:[],
+  csscope:["Grupo de WhatsApp","Links das aulas","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Dashboarding semanal","Coleta do NPS"],
+  facil:"Leandro Piazza · Marcelo Camara", mentor:"A definir",
+  metrica:"Startups com pitches prontos para investidores e NPS > 90."},
+
+ {n:5,nome:"Scale IA",contr:"SEBRAE SC",cat:"SoftwareHouse",val:"N/A",ini:"08/05",fim:"01/06",dur:"4 semanas",app:true,cs:false,
+  entrega:"Criar um App estilo SUAI para Mentorias e Conexões.",
+  promessa:"Entregar um App pronto (modelo Software House).",
+  publico:"SEBRAE para PMEs.",
+  estrutura:["A definir"],
+  appmods:["Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Sem CS"],
+  facil:"Maicon Douglas · Maurício Moraes", mentor:"—",
+  metrica:"App 100% funcional e aprovado pelo cliente."},
+
+ {n:6,nome:"Capacitação em Vendas de Gestores",contr:"SEBRAE SP",cat:"Capacitação",val:"Baixo",ini:"20/05",fim:"21/05",dur:"1 semana",app:true,cs:true,
+  entrega:"Capacitação de Gestores de São Paulo em vendas para Startups.",
+  promessa:"Alavancar a competência dos Gestores em processo comercial e vendas para Startups.",
+  publico:"Gestores de Startup de São Paulo.",
+  estrutura:["4 Workshops em 2 dias de evento","4h de Workshop online com Gestores"],
+  appmods:["Perfil Admin","Cronograma","NPS","Gravações","Perfil do Gestor"],
+  csscope:["Grupo de WhatsApp","Links das aulas","Acessos iniciais","Setup do App","Follow-ups","Acompanhamento do grupo","Métricas","Gravações","Coleta do NPS"],
+  facil:"Tiago Toigo · Victor Motta · Maicon Douglas", mentor:"—",
+  metrica:"NPS > 90 e Gestores com Playbook de Vendas de Startups."},
+
+ {n:7,nome:"Refresh",contr:"SEBRAE MG",cat:"Capacitação",val:"Baixo",ini:"21/05",fim:"17/07",dur:"8 semanas",app:true,cs:true,
+  entrega:"Capacitação de Gestores do Estado de Minas Gerais.",
+  promessa:"Alavancar a competência dos Gestores regionais SEBRAE em Ecossistema de Inovação e Startups.",
+  publico:"Gestores de Startup do Estado de Minas Gerais.",
+  estrutura:["8 Workshops semanais às quintas, 19h30","8 Mentorias Coletivas às sextas, 11h"],
+  appmods:["Perfil Admin","Atividades","Cronograma","NPS","Conteúdos Extras","Perfil do Gestor"],
+  csscope:["Grupo de WhatsApp","Links das aulas","Acessos iniciais","Setup do App","Follow-ups","Acompanhamento do grupo","Métricas","Gravações","Coleta do NPS"],
+  facil:"Tiago Toigo", mentor:"—",
+  metrica:"NPS > 90 e Gestores com Playbook do Ecossistema Local."},
+
+ {n:8,nome:"Jornada Startups",contr:"ACATE + SEBRAE SC",cat:"Aceleração",val:"Baixo",ini:"27/05",fim:"28/08",dur:"13 semanas",app:true,cs:true,
+  entrega:"Ajudar Startups a destravarem o processo comercial e melhorar as primeiras vendas.",
+  promessa:"Acompanhamento coletivo, CS forte e impacto positivo na receita.",
+  publico:"150 Startups/PMEs com mais de um ano de CNPJ ativo.",
+  estrutura:["10 semanas, 6 sprints","Aula e mentoria intercaladas","Toda quarta, 17h–19h"],
+  appmods:["Perfil Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Grupo de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Acompanhamento do grupo","Métricas","Gravações","Dashboarding semanal p/ ERs","Coleta do NPS final"],
+  facil:"Victor Motta", mentor:"—",
+  metrica:"Percentual em crescimento de Leads e Receita."},
+
+ {n:9,nome:"Capital Empreendedor — RN",contr:"SEBRAE RN",cat:"Captação",val:"Baixo",ini:"02/06",fim:"25/11",dur:"25 semanas",app:false,cs:true,
+  entrega:"Ajudar Startups e PMEs a captar investimento (estágio Ideação).",
+  promessa:"Acompanhamento coletivo, CS forte e impacto direto na estrutura de captação.",
+  publico:"30 Startups/PMEs com CNPJ ativo em Ideação.",
+  estrutura:["3 Workshops de 3h cada","Seleção dos pitches","6 Mentorias Comportamentais (3h)","6 Mentorias de Vendas (3h)","2 Mentorias de Jurídico (4h)","2 Mentorias de Finanças (4h)","Evento final presencial em SP"],
+  appmods:[],
+  csscope:["Grupo de WhatsApp","Links das aulas","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Dashboarding semanal","Coleta do NPS"],
+  facil:"Victor Motta", mentor:"A definir",
+  metrica:"Startups com pitches prontos para investidores e NPS > 90."},
+
+ {n:10,nome:"Capital Empreendedor + Tour Floripa",contr:"SEBRAE AM",cat:"Captação",val:"Baixo",ini:"04/06",fim:"25/11",dur:"25 semanas",app:false,cs:true,
+  entrega:"Ajudar Startups e PMEs a captar investimento (Ideação) + Tour no ecossistema de Florianópolis.",
+  promessa:"Acompanhamento coletivo, CS forte e captação + Missão Floripa ↔ Amazonas.",
+  publico:"30 Startups/PMEs com CNPJ ativo em Ideação + Gestores do Amazonas.",
+  estrutura:["3 Workshops de 3h cada","Seleção dos pitches","6 Mentorias Comportamentais (3h)","6 Mentorias de Vendas (3h)","2 Mentorias de Jurídico (4h)","2 Mentorias de Finanças (4h)","Startup Summit (26–28/08)","Evento final presencial em SP","Organização do ecossistema de Floripa para Gestores AM"],
+  appmods:[],
+  csscope:["Grupo de WhatsApp","Links das aulas","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Dashboarding semanal","Coleta do NPS"],
+  facil:"Tiago Toigo", mentor:"A definir",
+  metrica:"Startups com pitches prontos para investidores e NPS > 90."},
+
+ {n:11,nome:"GoJovem!Go",contr:"SEBRAE GO",cat:"Capacitação",val:"Médio",ini:"08/07",fim:"12/08",dur:"5 semanas",app:true,cs:true,
+  entrega:"Formar jovens empreendedores.",
+  promessa:"Formar jovens empreendedores e premiar os 3 melhores projetos.",
+  publico:"60 grupos de jovens de 18–29 anos em 4 perfis: Sucessor, Empreendedor, Empreendedor em Formação, Empreendedor em Potencial.",
+  estrutura:["5 Workshops semanais","Dinâmicas em grupo presenciais"],
+  appmods:["Perfil Admin","Perfil do Projeto","Perfil do Jovem","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos GTs","Métricas","Gravações","Dashboarding semanal p/ ERs","Coleta do NPS"],
+  facil:"Tiago Toigo", mentor:"—",
+  metrica:"Presença alta, projetos finalizados e NPS > 90."},
+
+ {n:12,nome:"Programa Nascer",contr:"FAPESC + SCTI + SEBRAE SC",cat:"Pré-Incubação",val:"Alto",ini:"21/07",fim:"28/11",dur:"19 semanas",app:true,cs:true,
+  entrega:"O maior programa de Pré-Incubação do estado de Santa Catarina.",
+  promessa:"CNPJs criados e subvenção.",
+  publico:"Aspirantes a founders com ideia de negócio ou Startups com CNPJ ativo há menos de 1 ano.",
+  estrutura:["10 semanas de encontro","10 Workshops toda terça, 18h30–21h","9 Mentorias presenciais toda quinta, 18h30–21h","Live Extra sexta, 10h30–11h30","1 Pitch Regional em cada um dos 20 centros","1 Pitch Day Final (encerramento)"],
+  appmods:["Perfil Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Gestão de Inscrições","Perfil do Usuário"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos GTs","Métricas","Gravações","Dashboarding semanal p/ Centros de Inovação","Coleta de NPS final"],
+  facil:"Tiago Toigo · Coordenadores dos CIs", mentor:"—",
+  metrica:"NPS alto, presença > 80% e CNPJs ativos."},
+
+ {n:13,nome:"Startup Zero",contr:"SCTI",cat:"Pré-Incubação",val:"Alto",ini:"10/08",fim:"12/12",dur:"18 semanas",app:true,cs:true,
+  entrega:"Startup University para 10 centros do Sul de Santa Catarina simultaneamente.",
+  promessa:"Desenvolvimento e impacto econômico do Sul do Estado.",
+  publico:"Aspirantes a founders com ideia de negócio ou Startups.",
+  estrutura:["16 Workshops","16 Oficinas presenciais","1 Pitch Regional em cada polo","1 Pitch Final em Florianópolis"],
+  appmods:["Perfil Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Gestão de Inscrições","Perfil do Usuário"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos GTs","Métricas","Gravações","Dashboarding semanal p/ Centros de Inovação","Coleta de NPS final"],
+  facil:"Tiago Toigo · Leandro Piazza · Victor Motta · Coordenadores", mentor:"—",
+  metrica:"CNPJs criados, projetos desenvolvidos e NPS > 90."},
+
+ {n:14,nome:"SATC FAPESC",contr:"SATC",cat:"SoftwareHouse",val:"N/A",ini:"25/05",fim:"20/06",dur:"4 semanas",app:true,cs:false,novo:true,
+  entrega:"Criar um App estilo SUAI para Mentorias e Conexões.",
+  promessa:"Entregar um App pronto (modelo Software House).",
+  publico:"SATC e Startups da SATC.",
+  estrutura:["A definir"],
+  appmods:["Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Sem CS"],
+  facil:"Maicon Douglas · Maurício Moraes", mentor:"—",
+  metrica:"App 100% funcional e aprovado pelo cliente."},
+
+ {n:15,nome:"Unisenai",contr:"UNISENAI",cat:"Pré-Incubação",val:"Médio",ini:"10/08",fim:"14/11",dur:"14 semanas",app:true,cs:true,novo:true,
+  entrega:"Startup Zero para docentes e discentes do Unisenai, com a metodologia de Startups.",
+  promessa:"Desenvolvimento e impacto em inovação do Unisenai.",
+  publico:"Discentes e Docentes do Unisenai.",
+  estrutura:["16 Workshops","16 Oficinas online","1 Pitch Final em Florianópolis"],
+  appmods:["Perfil Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Gestão de Inscrições","Perfil do Usuário"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos GTs","Métricas","Gravações","Dashboarding semanal p/ Centros de Inovação","Coleta de NPS final"],
+  facil:"Tiago Toigo · Leandro Piazza · Victor Motta · Coordenadores", mentor:"—",
+  metrica:"CNPJs criados, projetos desenvolvidos e NPS > 90."}
+];
+
+const PILARES = [
+ ["Categoria","Em qual taxonomia o projeto se encaixa. Define o padrão operacional que se aplica."],
+ ["Entrega Principal","Uma frase que define o que o projeto entrega para o público-final. O 'porquê' do programa."],
+ ["Público","Quem participa, quantos slots e qual perfil exigido. Vira critério de seleção."],
+ ["Datas","Início e encerramento. Define a janela em que o time B2B precisa estar 100% disponível."],
+ ["Estrutura / Escopo","Workshops, mentorias, sprints, pitch days e eventos. Vira cronograma detalhado."],
+ ["Promessa","O contrato emocional com o contratante. O que é cobrado nas reuniões de status."],
+ ["App","O projeto usa o APP PWA? Quais módulos? Define o escopo de Produto e Tech."],
+ ["CS","Escopo de Customer Success: grupos, links, dashboards, RAE, gravações, follow-ups, NPS."],
+ ["Facilitador / Mentor","Quem conduz cada workshop e mentoria. Define a agenda de cada profissional."],
+ ["Métrica de Sucesso","O número/condição que define se o projeto foi um sucesso. Critério de renovação."]
+];
+
+const TEAMS = [
+ {nome:"Produto & Tech",who:"Gabriel Boff · Maicon Silveira",
+  ent:["Camada Admin para o contratante","Perfil de Startup/PME/Jovem/Gestor","Atividades, Diagnósticos, Cronograma e NPS","Módulo de Conteúdos Extras","Quando aplicável: Inscrições, Seleção, Avaliação, Logística"],
+  marcos:[["D-30","Escopo de App fechado com a Direção"],["D-20","Setup na infra: logo, cores, domínio"],["D-10","Vídeo de setup do App (insumo p/ CS)"],["D-3","App pronto; testes finais com a Direção"],["Durante","Suporte via CS; bugs e melhorias"]],
+  cond:p=>p.app, condLabel:"Atua nos projetos com APP"},
+ {nome:"Design",who:"Caio Montes",
+  ent:["Identidade visual da edição","Capas e templates de slides","Peças de divulgação do contratante","Templates de dashboard semanal","Material de encerramento e certificados"],
+  marcos:[["D-30","Brief de identidade visual recebido"],["D-15","Capas e templates p/ Conteúdo"],["D-7","Peças de divulgação ao contratante"],["Durante","Atualização semanal de dashboard"],["D+7","Material de encerramento"]],
+  cond:p=>p.cat!=="SoftwareHouse", condLabel:"Atua em todo programa com facilitação"},
+ {nome:"Conteúdo & Roteiro",who:"Tiago Toigo · Victor Motta · Marcelo Camara · Leandro Piazza",
+  ent:["Roteiro detalhado por workshop","Script-base de cada mentoria","Diagnósticos aplicados no App","Conteúdos extras (vídeos, leituras, templates)","Roteiro do evento final / Pitch Day"],
+  marcos:[["D-30","Roadmap de conteúdo fechado"],["D-15","Roteiros das 3 primeiras semanas"],["D-7","Diagnósticos no App; materiais subidos"],["Durante","Roteiros com 5 dias de antecedência"],["D+5","Retrospectiva e ajustes"]],
+  cond:p=>p.cat!=="SoftwareHouse", condLabel:"Atua em todo programa com facilitação"},
+ {nome:"Customer Success",who:"Tamara Moraes (líder) + time CS",
+  ent:["Grupos de WhatsApp (geral + GTs)","Links de aulas e mentorias","Envio dos acessos iniciais","Substituições de desistentes (tracking de CNPJs)","Setup e gravações no RAE","Follow-ups; presença e métricas","Dashboarding semanal","Coleta e tratamento do NPS"],
+  marcos:[["D-20","Lista de inscritos; validação de critérios"],["D-10","Grupos de WhatsApp; links das aulas"],["D-3","Acessos enviados; vídeo de setup distribuído"],["Durante","Follow-ups, dashboard e reposições; RAE"],["D+15","NPS final e relatório ao contratante"]],
+  cond:p=>p.cs, condLabel:"Atua sempre que CS = Sim"}
+];
+
+const STEPS = [
+ ["Descoberta com o contratante","Entender entrega principal, público, datas, métrica de sucesso, valor de contrato e particularidades."],
+ ["Classificação na taxonomia","Definir em qual das 6 categorias o projeto se encaixa. Isso determina o padrão operacional esperado."],
+ ["Preenchimento da ficha","Preencher 100% da ficha antes da fase seguinte. Campos vazios são pontos cegos de atraso."],
+ ["Alinhamento por time","Cada time mapeia suas entregas usando o cronograma de antecedência. Variações são anotadas na ficha."],
+ ["Inserção no manual e no Notion","Ficha inserida no catálogo (ordem cronológica) e replicada no Notion para acompanhamento semanal."]
+];
+
+const TPL = [
+ ["Nome do projeto",1],["Contratante",1],
+ ["Categoria","opts:Aceleração|Pré-Incubação|Captação|Capacitação|Premiação|SoftwareHouse"],
+ ["Entrega principal",1],["Promessa",1],["Público",1],
+ ["Data de início / fim",1],["Duração (semanas)",1],["Estrutura / escopo",1],
+ ["App","opts:Sim — módulos|Não"],["CS","opts:Sim — escopo|Não"],
+ ["Facilitadores",1],["Mentores",1],["Métrica de sucesso",1],
+ ["Valor do contrato","opts:Alto|Médio|Baixo|N/A"]
+];
+
+const ALERTS = [
+ ["Maio–Junho","Pico de sobreposição: 10+ projetos correndo (Start, BRDE, Cap.Emp MG, Scale IA, SATC FAPESC, Cap.Vendas, Refresh, Jornada, Cap.RN, Cap.AM). Janela crítica para CS e Conteúdo."],
+ ["Julho–Agosto","Entrada simultânea: GoJovem (08/07), Nascer (21/07), Startup Zero e Unisenai (10/08) + Startup Summit (26–28/08). Validar agendas dos facilitadores com 30 dias."],
+ ["Novembro","Encerram juntos: Cap.Emp MG/AM/RN + Nascer + Unisenai (14/11). Planejar o pico de coleta de NPS e relatórios finais."],
+ ["Dezembro","Startup Zero (12/12) e Prêmio Sebrae (01/12) fecham o ano. Logística do Summit e premiação concentradas."],
+ ["Fundo de ano","Prêmio Sebrae roda o ano inteiro: não bloqueia facilitação, mas demanda Tech contínuo."]
+];
+
+/* =================== HELPERS =================== */
+const $=s=>document.querySelector(s), ce=(t,c)=>{const e=document.createElement(t); if(c)e.className=c; return e;};
+const cv=cat=>CAT[cat].v;
+function doy(dmm){const [d,m]=dmm.split("/").map(Number); return (Date.UTC(2026,m-1,d)-Date.UTC(2026,0,1))/86400000;}
+const YEAR_DAYS=365;
+
+/* =================== HERO STATS =================== */
+const stats=[[PROJ.length,"projetos ativos"],[Object.keys(CAT).length,"categorias"],
+ [PROJ.filter(p=>p.app).length,"com App PWA"],[PROJ.filter(p=>p.cs).length,"com CS"],[2,"novos em 2026"]];
+$("#hero-stats").innerHTML=stats.map(s=>`<div class="stat reveal"><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join("");
+
+/* =================== NAV =================== */
+const SECTIONS=[["fundamentos","Fundamentos"],["times","Times"],["catalogo","Catálogo"],["calendario","Calendário"],["cruzamentos","Cruzamentos"],["protocolo","Protocolo"]];
+$("#nav").innerHTML=SECTIONS.map(s=>`<button data-go="${s[0]}">${s[1]}</button>`).join("");
+$("#nav").addEventListener("click",e=>{const b=e.target.closest("button"); if(b)document.getElementById(b.dataset.go).scrollIntoView();});
+
+/* =================== PILARES =================== */
+$("#pilares").innerHTML=PILARES.map((p,i)=>`<div class="card pilar reveal"><div class="num">${String(i+1).padStart(2,"0")}</div><h4>${p[0]}</h4><p>${p[1]}</p></div>`).join("")
+ +`<div class="card pilar extra reveal"><div class="num">+</div><h4>Valor do Contrato</h4><p>Campo comercial (Alto/Médio/Baixo). Orienta priorização quando há conflito de agendas — não substitui a entrega.</p></div>`;
+
+/* =================== CATEGORIAS =================== */
+$("#cats").innerHTML=Object.entries(CAT).map(([nome,c])=>{
+  const ps=PROJ.filter(p=>p.cat===nome).map(p=>p.nome).join(" · ");
+  return `<div class="card cat reveal" style="--cc:var(${c.v})" data-cat="${nome}">
+    <span class="ctag">${nome}</span>
+    <div class="kv"><b>Padrão</b><span>${c.op}</span></div>
+    <div class="kv"><b>Público típico</b><span>${c.pub}</span></div>
+    <div class="port"><b>No portfólio:</b> ${ps}</div>
+    <div class="gohint">→ filtrar catálogo por esta categoria</div>
+  </div>`;}).join("");
+$("#cats").addEventListener("click",e=>{const c=e.target.closest(".cat"); if(!c)return;
+  setCatFilter(c.dataset.cat); $("#catalogo").scrollIntoView();});
+
+/* =================== TIMES =================== */
+$("#teams").innerHTML=TEAMS.map((t,i)=>`<div class="card team reveal" data-team="${i}">
+  <h4>${t.nome}</h4><div class="who">${t.who}</div>
+  <ul>${t.ent.map(x=>`<li>${x}</li>`).join("")}</ul>
+  <div class="timeline">${t.marcos.map(m=>`<div class="row"><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div>
+  <div class="cta">→ ${t.condLabel} · clique para ver onde</div>
+</div>`).join("");
+$("#teams").addEventListener("click",e=>{const t=e.target.closest(".team"); if(!t)return;
+  const team=TEAMS[+t.dataset.team];
+  activeTeam = activeTeam===team ? null : team;
+  document.querySelectorAll(".team").forEach(el=>el.style.borderTopColor = (activeTeam===TEAMS[+el.dataset.team])?"var(--orange)":"var(--orange)");
+  renderCatalog(); $("#catalogo").scrollIntoView();
+});
+
+/* =================== CATÁLOGO + FILTROS =================== */
+let state={cats:new Set(),search:"",app:null,cs:null};
+let activeTeam=null;
+const VALCOL={Alto:"--c-acel","Médio":"--c-prei"};
+
+$("#filters").innerHTML=Object.keys(CAT).map(c=>`<button class="chip" data-cat="${c}">${c}</button>`).join("");
+$("#filters2").innerHTML=`
+ <button class="chip gen" data-flag="app">Com App</button>
+ <button class="chip gen" data-flag="cs">Com CS</button>
+ <button class="chip gen" data-flag="novo">Novos 2026</button>
+ <button class="chip gen" data-flag="clear">Limpar filtros</button>`;
+
+function setCatFilter(cat){state.cats=new Set([cat]); syncChips(); renderCatalog();}
+function syncChips(){
+  document.querySelectorAll('#filters .chip').forEach(c=>c.classList.toggle("on",state.cats.has(c.dataset.cat)));
+  document.querySelectorAll('#filters2 .chip').forEach(c=>{
+    const f=c.dataset.flag;
+    c.classList.toggle("on",(f==="app"&&state.app)||(f==="cs"&&state.cs)||(f==="novo"&&state.novo));
+  });
+}
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b)return;
+  const c=b.dataset.cat; state.cats.has(c)?state.cats.delete(c):state.cats.add(c); syncChips(); renderCatalog();});
+$("#filters2").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b)return;
+  const f=b.dataset.flag;
+  if(f==="clear"){state={cats:new Set(),search:"",app:null,cs:null,novo:null}; activeTeam=null; $("#search").value="";}
+  else if(f==="app")state.app=state.app?null:true;
+  else if(f==="cs")state.cs=state.cs?null:true;
+  else if(f==="novo")state.novo=state.novo?null:true;
+  syncChips(); renderCatalog();});
+$("#search").addEventListener("input",e=>{state.search=e.target.value.toLowerCase(); renderCatalog();});
+
+function matchProj(p){
+  if(state.cats.size && !state.cats.has(p.cat))return false;
+  if(state.app && !p.app)return false;
+  if(state.cs && !p.cs)return false;
+  if(state.novo && !p.novo)return false;
+  if(activeTeam && !activeTeam.cond(p))return false;
+  if(state.search){const hay=(p.nome+" "+p.contr+" "+p.facil+" "+p.mentor+" "+p.cat+" "+p.entrega).toLowerCase();
+    if(!hay.includes(state.search))return false;}
+  return true;
+}
+function renderCatalog(){
+  const list=PROJ.filter(matchProj);
+  $("#count-note").textContent=`${list.length} de ${PROJ.length} projetos`+(activeTeam?` · time: ${activeTeam.nome}`:"");
+  $("#catalog").innerHTML=list.map(p=>`
+   <div class="card proj reveal in ${p.novo?'new':''}" style="--cc:var(${cv(p.cat)})" data-id="${p.n}">
+     <div class="bignum">${String(p.n).padStart(2,"0")}</div>
+     <span class="ctag">${p.cat}</span>
+     <h4>${p.nome}</h4>
+     <div class="contr">${p.contr}</div>
+     <p class="deliver">${p.entrega}</p>
+     <div class="foot">
+       <span class="tag ${p.app?'app':'noapp'}">${p.app?'APP':'sem app'}</span>
+       <span class="tag ${p.cs?'cs':'noapp'}">${p.cs?'CS':'sem cs'}</span>
+       ${p.val!=='N/A'?`<span class="tag val-${p.val}">${p.val}</span>`:`<span class="tag">N/A</span>`}
+       <span class="tag dates">${p.ini}–${p.fim}</span>
+     </div>
+   </div>`).join("") || `<div class="card" style="grid-column:1/-1;text-align:center;color:var(--muted)">Nenhum projeto com esses filtros.</div>`;
+}
+$("#catalog").addEventListener("click",e=>{const c=e.target.closest(".proj"); if(c)openModal(+c.dataset.id);});
+
+/* =================== MODAL =================== */
+function teamsFor(p){
+  return TEAMS.map(t=>({nome:t.nome,on:t.cond(p)}));
+}
+function openModal(id){
+  const p=PROJ.find(x=>x.n===id);
+  const acts=teamsFor(p);
+  const rows=[
+   ["Categoria",p.cat],["Entrega principal",p.entrega],["Promessa",p.promessa],["Público",p.publico],
+   ["Datas",`${p.ini} → ${p.fim} · ${p.dur}`],
+   ["Estrutura/Escopo",`<ul>${p.estrutura.map(x=>`<li>${x}</li>`).join("")}</ul>`],
+   ["App",p.app?`Sim — <ul>${p.appmods.map(x=>`<li>${x}</li>`).join("")}</ul>`:"Não"],
+   ["CS",p.cs?`Sim — <ul>${p.csscope.map(x=>`<li>${x}</li>`).join("")}</ul>`:"Não"],
+   ["Facilitadores",p.facil],["Mentores",p.mentor],["Métrica de sucesso",p.metrica],["Valor do contrato",p.val]
+  ];
+  $("#modal").style.setProperty("--cc",`var(${cv(p.cat)})`);
+  $("#modal").innerHTML=`
+   <div class="modal-top">
+     <button class="modal-close" aria-label="Fechar">✕</button>
+     <span class="ctag">${p.cat} · ${p.contr}</span>
+     <h3>${p.nome}</h3>
+     <div class="contr">Projeto #${String(p.n).padStart(2,"0")} no portfólio${p.novo?' · NOVO em 2026':''}</div>
+   </div>
+   <div class="modal-body">
+     <div class="frow"><div class="k">Quem atua</div><div class="v"><div class="who-acts">
+       ${acts.map(a=>`<span class="pa ${a.on?'on':''}">${a.nome} ${a.on?'✓':'—'}</span>`).join("")}
+     </div></div></div>
+     ${rows.map(r=>`<div class="frow"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join("")}
+   </div>`;
+  $("#overlay").classList.add("open"); document.body.style.overflow="hidden";
+  $("#modal .modal-close").focus();
+}
+function closeModal(){$("#overlay").classList.remove("open"); document.body.style.overflow="";}
+$("#overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closeModal();});
+$("#modal").addEventListener("click",e=>{if(e.target.closest(".modal-close"))closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+
+/* =================== GANTT =================== */
+const MONTHS=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];
+$("#gmonths").innerHTML=MONTHS.map(m=>`<span>${m}</span>`).join("");
+const todayPct=(doy("05/06")/YEAR_DAYS)*100;
+$("#gantt-rows").innerHTML=PROJ.map(p=>{
+  const l=(doy(p.ini)/YEAR_DAYS)*100, w=((doy(p.fim)-doy(p.ini))/YEAR_DAYS)*100;
+  return `<div class="grow">
+    <div class="glabel"><i style="background:var(${cv(p.cat)})"></i>${p.nome}</div>
+    <div class="gtrack">
+      <div class="gbar" style="--cc:var(${cv(p.cat)});left:${l}%;width:${w}%;background:var(${cv(p.cat)})"
+        data-id="${p.n}" title="${p.nome} · ${p.ini}–${p.fim}">
+        <span class="blab">${p.ini}</span>
+      </div>
+    </div>
+  </div>`;}).join("")
+ +`<div class="grow" style="border:0;height:0;position:relative"><div></div><div class="gtrack" style="height:0">
+    <div class="today-line" style="left:${todayPct}%"></div></div></div>`;
+/* linha HOJE atravessando todas as linhas */
+const gi=document.querySelector(".gantt-inner");
+const tl=ce("div","today-line"); tl.style.cssText=`left:calc(210px + (100% - 210px)*${todayPct/100});top:24px;bottom:24px;position:absolute`;
+gi.style.position="relative"; gi.appendChild(tl);
+$("#gantt-rows").addEventListener("click",e=>{const b=e.target.closest(".gbar"); if(b)openModal(+b.dataset.id);});
+$("#gantt-leg").innerHTML=Object.entries(CAT).map(([n,c])=>`<span><i style="background:var(${c.v})"></i>${n}</span>`).join("");
+
+/* =================== ALERTS =================== */
+$("#alerts").innerHTML=ALERTS.map(a=>`<div class="card alert reveal"><div class="mo">${a[0]}</div><p>${a[1]}</p></div>`).join("");
+
+/* =================== CARGA POR FACILITADOR =================== */
+const FACS={};
+PROJ.forEach(p=>{p.facil.split("·").map(s=>s.trim()).forEach(f=>{
+  if(/Coordenador/i.test(f)){return;}
+  FACS[f]=(FACS[f]||0)+1;});});
+const facArr=Object.entries(FACS).sort((a,b)=>b[1]-a[1]);
+const maxF=facArr[0][1];
+const FROLE={"Tiago Toigo":"Direção / Facilitação","Victor Motta":"Head de Produto / Facilitação","Leandro Piazza":"CEO / Facilitação","Marcelo Camara":"49 Ventures","Maicon Douglas":"Produto & Tech","Maurício Moraes":"Produto & Tech","Rafael Peck":"Coordenação institucional","Diego Moeller":"Mentor","Giba Lopes":"Mentor"};
+$("#load").innerHTML=facArr.map(([f,n])=>`
+  <div class="lrow reveal ${n>=5?'hot':''}">
+    <div class="nm">${f}<small>${FROLE[f]||""}</small></div>
+    <div class="lbar"><i style="width:${(n/maxF)*100}%"></i></div>
+    <div class="cn">${n}</div>
+  </div>`).join("");
+
+/* =================== MATRIZ TIME × PROJETO =================== */
+$("#matrix-body").innerHTML=PROJ.map(p=>{
+  const a=teamsFor(p);
+  return `<tr><th style="--cc:var(${cv(p.cat)})">${String(p.n).padStart(2,"0")} · ${p.nome}</th>`+
+    a.map(x=>`<td class="${x.on?'yes':'dot'}">${x.on?'●':'·'}</td>`).join("")+`</tr>`;
+}).join("");
+
+/* =================== STEPS + TEMPLATE =================== */
+$("#steps").innerHTML=STEPS.map(s=>`<div class="card step reveal"><h4>${s[0]}</h4><p>${s[1]}</p></div>`).join("");
+$("#tpl-body").innerHTML=TPL.map(f=>{
+  if(typeof f[1]==="string"&&f[1].startsWith("opts:")){
+    const opts=f[1].slice(5).split("|");
+    return `<div class="fld"><div class="k">${f[0]}</div><div class="opts">${opts.map(o=>`( ) ${o}`).join("")}</div></div>`;}
+  return `<div class="fld"><div class="k">${f[0]}</div><div class="ln"></div></div>`;
+}).join("");
+
+/* =================== SCROLLSPY + REVEAL =================== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in");}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+const secs=SECTIONS.map(s=>document.getElementById(s[0]));
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.go===e.target.id));}
+}),{rootMargin:"-40% 0px -55% 0px"});
+secs.forEach(s=>spy.observe(s));
+
+/* init */
+renderCatalog();
+</script>
+</body>
+</html>
