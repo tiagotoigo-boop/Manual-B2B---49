@@ -170,6 +170,14 @@ section.block{padding:60px 0; border-top:1px solid var(--line); scroll-margin-to
 .tag.val-Alto{border-color:rgba(255,79,17,.5); color:var(--orange)}
 .tag.val-Médio{border-color:rgba(245,158,11,.5); color:#fbbf24}
 .tag.dates{margin-left:auto; color:var(--muted)}
+.proj .plano{display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:10.5px; letter-spacing:.05em;
+  color:var(--cc); text-decoration:none; border:1px solid var(--line); border-radius:6px; padding:5px 9px; transition:.15s}
+.proj .plano:hover{border-color:var(--cc); background:rgba(255,255,255,.03)}
+
+/* botão de plano no modal */
+.plano-btn{display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-size:12px; letter-spacing:.04em;
+  background:var(--cc); color:#0A0A0A; font-weight:500; padding:9px 15px; border-radius:9px; transition:.15s}
+.plano-btn:hover{filter:brightness(1.12)}
 
 /* ====== MODAL ====== */
 .overlay{position:fixed; inset:0; z-index:100; background:rgba(5,5,5,.78); backdrop-filter:blur(6px);
@@ -697,6 +705,32 @@ const ALERTS = [
  ["Novos nesta revisão","4 projetos entraram no portfólio: Sebrae PE, Aceleração Bahia, Fator S Paracatu e Centelha RS. Centelha ainda com escopo/datas a confirmar."]
 ];
 
+/* =================== PLANOS DE TRABALHO (Drive) =================== */
+const DRIVE_ROOT="https://drive.google.com/drive/folders/1KnVQmStivZXHFeRyQw83lyxX5mNedZGe?usp=sharing";
+const PLANOS={
+ 1:"https://drive.google.com/drive/folders/12tob6tbV6ryPTeVuhciFAvKpa0HdiXC_",
+ 2:"https://drive.google.com/drive/folders/1sYvvGlwqoN5i-OLNm31vVNPSY5n0vVvl",
+ 3:"https://drive.google.com/drive/folders/1TbRN9LHYlaGkPwd4ODgHRX_VRMY48qCh",
+ 4:"https://drive.google.com/drive/folders/1X0k6FP7Y0PdHQsPnJ7UcXYyDKMzKwcMk",
+ 5:DRIVE_ROOT,
+ 6:"https://drive.google.com/drive/folders/1QJI8gtf-EmwRp7i4ceUosl1UbvtzYvwe",
+ 7:"https://drive.google.com/drive/folders/1U-g062So7NcMa_-4Dxa5em353ZCNpiaY",
+ 8:"https://drive.google.com/drive/folders/1Wg3pyDyIZuxRF604hBLkc5iXgADJljpz",
+ 9:"https://drive.google.com/drive/folders/1JmOdustz54PsLiNkUrovnfmCAxMGVfue",
+ 10:"https://drive.google.com/drive/folders/1DAYpJ59X_WoPMiFpxi71JkYKr8nIl52h",
+ 11:DRIVE_ROOT,
+ 12:"https://drive.google.com/drive/folders/1XPNwCpvD83-j9aObzO-tRNVX03Gszt7Y",
+ 13:"https://drive.google.com/drive/folders/1uIQL8nwLPw1UlpFNXVLCP4BYirMJWL-F",
+ 14:"https://drive.google.com/drive/folders/1qzz736m1K5b3Mq1LOeCQQ1UFdaD2kRdj",
+ 15:"https://drive.google.com/drive/folders/19Rxw1nHj0qBWlrry-CFaD8ZdaBc5EGVF",
+ 16:"https://drive.google.com/drive/folders/1eBOi4Ax6I4HYiWmPW24nuEUTSJit7MPc",
+ 17:"https://drive.google.com/drive/folders/1oXEGfI-lJ4mv1_0aPex8ItDBwp8bh2jQ",
+ 18:"https://drive.google.com/drive/folders/1AkQMiJzfQNrh0FVp_iuu0khGhLd97rx8",
+ 19:DRIVE_ROOT,
+ 20:"https://drive.google.com/drive/folders/1MXmtw4MD0VEz7nf0ApHRkg4wnBUOFxQL"
+};
+const planoUrl=n=>PLANOS[n]||DRIVE_ROOT;
+
 /* =================== HELPERS =================== */
 const $=s=>document.querySelector(s), ce=(t,c)=>{const e=document.createElement(t); if(c)e.className=c; return e;};
 const cv=cat=>CAT[cat].v;
@@ -801,9 +835,10 @@ function renderCatalog(){
        ${p.val!=='N/A'?`<span class="tag val-${p.val}">${p.val}</span>`:`<span class="tag">N/A</span>`}
        <span class="tag dates">${p.ini}–${p.fim}</span>
      </div>
+     <a class="plano" href="${planoUrl(p.n)}" target="_blank" rel="noopener">📄 Plano de trabalho ↗</a>
    </div>`).join("") || `<div class="card" style="grid-column:1/-1;text-align:center;color:var(--muted)">Nenhum projeto com esses filtros.</div>`;
 }
-$("#catalog").addEventListener("click",e=>{const c=e.target.closest(".proj"); if(c)openModal(+c.dataset.id);});
+$("#catalog").addEventListener("click",e=>{if(e.target.closest("a"))return; const c=e.target.closest(".proj"); if(c)openModal(+c.dataset.id);});
 
 /* =================== MODAL =================== */
 function teamsFor(p){
@@ -829,6 +864,9 @@ function openModal(id){
      <div class="contr">Projeto #${String(p.n).padStart(2,"0")} no portfólio${p.novo?' · NOVO em 2026':''}</div>
    </div>
    <div class="modal-body">
+     <div class="frow"><div class="k">Plano de trabalho</div><div class="v">
+       <a class="plano-btn" href="${planoUrl(p.n)}" target="_blank" rel="noopener">📄 Abrir plano de trabalho no Drive ↗</a>
+     </div></div>
      <div class="frow"><div class="k">Quem atua</div><div class="v"><div class="who-acts">
        ${acts.map(a=>`<span class="pa ${a.on?'on':''}">${a.nome} ${a.on?'✓':'—'}</span>`).join("")}
      </div></div></div>
