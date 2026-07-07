@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manual de Projetos &amp; Operações B2B · 49 Educação · v2.3</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230A0A0A'/%3E%3Ctext x='50' y='70' font-family='Arial,Helvetica,sans-serif' font-size='58' font-weight='bold' fill='%23FF4F11' text-anchor='middle'%3E49%3C/text%3E%3C/svg%3E">
+<title>Manual de Projetos & Operações B2B · 49 Educação · v2.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -16,7 +15,7 @@
   --orange:#FF4F11; --orange2:#E05A1A; --orangeglow:rgba(255,79,17,.20);
   /* categorias */
   --c-acel:#FF4F11; --c-prei:#F59E0B; --c-capt:#38BDF8;
-  --c-capa:#C084FC; --c-prem:#FACC15; --c-soft:#2DD4BF; --c-sele:#F472B6;
+  --c-capa:#C084FC; --c-prem:#FACC15; --c-soft:#2DD4BF;
   --shadow:0 24px 60px -28px rgba(0,0,0,.9);
   --radius:14px;
 }
@@ -149,7 +148,6 @@ section.block{padding:60px 0; border-top:1px solid var(--line); scroll-margin-to
 .chip[data-cat="Captação"].on{background:var(--c-capt); border-color:var(--c-capt)}
 .chip[data-cat="Capacitação"].on{background:var(--c-capa); border-color:var(--c-capa)}
 .chip[data-cat="Premiação"].on{background:var(--c-prem); border-color:var(--c-prem)}
-.chip[data-cat="Seleção"].on{background:var(--c-sele); border-color:var(--c-sele)}
 .chip[data-cat="SoftwareHouse"].on{background:var(--c-soft); border-color:var(--c-soft)}
 .chip.gen.on{background:var(--ink); border-color:var(--ink)}
 .count-note{font-size:11px; color:var(--muted); margin-left:auto; letter-spacing:.05em}
@@ -188,32 +186,6 @@ section.block{padding:60px 0; border-top:1px solid var(--line); scroll-margin-to
   color:var(--ink); width:34px; height:34px; border-radius:9px; cursor:pointer; font-size:16px; line-height:1}
 .modal-close:hover{background:var(--orange); color:#0A0A0A; border-color:var(--orange)}
 .modal-body{padding:24px 30px 30px}
-/* PLANO DE EXECUÇÃO */
-.plano{margin-top:22px; border-top:1px solid var(--line2); padding-top:22px}
-.plano-head{margin-bottom:12px}
-.plano-tag{display:inline-block; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#0A0A0A;
-  background:var(--orange); padding:5px 12px; border-radius:6px; font-weight:500}
-.plano-resumo{font-size:13px; color:var(--ink); margin:0 0 18px; line-height:1.5}
-.pl-block{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:15px 17px; margin-bottom:11px}
-.pl-bt{font-family:'Syne'; font-weight:700; font-size:13.5px; color:var(--ink); margin-bottom:11px; letter-spacing:.01em}
-.pl-kv .pl-row{display:grid; grid-template-columns:200px 1fr; gap:12px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:12px}
-.pl-kv .pl-row:last-child{border-bottom:0}
-.pl-k{color:var(--muted); letter-spacing:.03em}
-.pl-v{color:var(--ink2)}
-.pl-list{margin:0; padding-left:16px}
-.pl-list li{font-size:12px; color:var(--ink2); margin-bottom:5px}
-.pl-steps{display:flex; flex-direction:column; gap:0}
-.pl-step{display:grid; grid-template-columns:130px 1fr; gap:12px; padding:7px 0; border-bottom:1px dashed var(--line); font-size:12px}
-.pl-step:last-child{border-bottom:0}
-.pl-when{color:var(--orange); font-weight:500; letter-spacing:.02em}
-.pl-what{color:var(--ink2)}
-.plano-doc{display:inline-flex; align-items:center; gap:8px; margin-top:6px; text-decoration:none;
-  font-size:12.5px; color:var(--orange); background:rgba(255,79,17,.08); border:1px solid rgba(255,79,17,.3);
-  padding:11px 16px; border-radius:10px; transition:.15s; font-weight:500}
-.plano-doc:hover{background:var(--orange); color:#0A0A0A; border-color:var(--orange)}
-@media(max-width:560px){.pl-kv .pl-row,.pl-step{grid-template-columns:1fr; gap:2px}.pl-when{color:var(--orange)}}
-.proj .plano-flag{display:inline-block; margin-top:11px; font-size:9px; letter-spacing:.16em; color:var(--orange);
-  background:rgba(255,79,17,.08); border:1px solid rgba(255,79,17,.25); padding:4px 9px; border-radius:6px}
 .frow{display:grid; grid-template-columns:130px 1fr; gap:14px; padding:13px 0; border-bottom:1px dashed var(--line)}
 .frow:last-child{border-bottom:0}
 .frow .k{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:3px}
@@ -262,14 +234,15 @@ table.matrix td.dot{text-align:center; color:var(--muted)}
 table.matrix td.yes{color:var(--orange); font-weight:500}
 table.matrix tbody tr:hover td, table.matrix tbody tr:hover th{background:rgba(255,79,17,.05)}
 
-/* OS MAIS ENVOLVIDOS */
-.load{grid-template-columns:1fr; gap:12px; max-width:760px}
-.lrow{display:grid; grid-template-columns:190px 1fr; gap:16px; align-items:center}
-.lrow .nm{font-size:12.5px; color:var(--ink); line-height:1.25}
-.lrow .nm small{display:block; color:var(--muted); font-size:10px; letter-spacing:.04em; margin-top:1px}
+/* CARGA FACILITADOR */
+.load{grid-template-columns:1fr; gap:10px; max-width:760px}
+.lrow{display:grid; grid-template-columns:160px 1fr 40px; gap:14px; align-items:center}
+.lrow .nm{font-size:12.5px; color:var(--ink)}
+.lrow .nm small{display:block; color:var(--muted); font-size:10px; letter-spacing:.04em}
 .lbar{height:14px; background:var(--panel2); border-radius:7px; overflow:hidden; border:1px solid var(--line)}
 .lbar i{display:block; height:100%; background:linear-gradient(90deg,var(--orange2),var(--orange)); border-radius:7px}
-.lrow.hot .lbar i{background:linear-gradient(90deg,var(--orange2),var(--orange))}
+.lrow .cn{font-family:'Syne'; font-weight:800; font-size:18px; text-align:right}
+.lrow.hot .cn{color:var(--orange)}
 
 /* PROTOCOLO */
 .steps{counter-reset:s; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
@@ -313,14 +286,14 @@ footer .meta b{color:var(--ink2); font-weight:400}
 
 <nav class="topnav">
   <div class="wrap">
-    <div class="brand"><span class="dot"></span><b>49</b><span>MANUAL B2B · v2.3</span></div>
+    <div class="brand"><span class="dot"></span><b>49</b><span>MANUAL B2B · v2.1</span></div>
     <div class="navlinks" id="nav"></div>
   </div>
 </nav>
 
 <header class="hero wrap">
   <div class="hashtag">#bea49er</div>
-  <div class="kick"><i></i> Documento vivo · v2.3 · Junho/2026</div>
+  <div class="kick"><i></i> Documento vivo · v2.1 · Julho/2026</div>
   <h1>Livro do jogo<br><em>do setor B2B.</em></h1>
   <p class="sub">O manual operacional de todos os programas B2B da 49 Educação. Quem é o contratante, o que cada time entrega, em que prazo, e qual é a métrica que define sucesso — tudo cruzado, navegável e pronto para apresentar.</p>
   <div class="meta" id="hero-stats"></div>
@@ -397,10 +370,10 @@ footer .meta b{color:var(--ink2); font-weight:400}
 <section class="block" id="cruzamentos">
   <div class="sec-head">
     <div><div class="idx">PARTE V</div><h2>Visões cruzadas</h2></div>
-    <p>Como o portfólio se interliga: os mais envolvidos na operação e a matriz de atuação por time.</p>
+    <p>Como o portfólio se interliga: carga por facilitador e matriz de atuação por time.</p>
   </div>
 
-  <div class="mono-label" style="margin-bottom:16px">Os mais envolvidos na operação — referência de quem está em mais frentes</div>
+  <div class="mono-label" style="margin-bottom:16px">Carga por facilitador — quem é gargalo de agenda</div>
   <div class="grid load" id="load"></div>
 
   <div class="mono-label" style="margin:42px 0 16px">Matriz: o que cada time atua em cada projeto</div>
@@ -438,8 +411,8 @@ footer .meta b{color:var(--ink2); font-weight:400}
       <p style="color:var(--ink2);font-size:12px;max-width:420px;margin:14px 0 0">Se algo no portfólio mudou e este manual não foi atualizado, ele virou ficção. A cada projeto novo, preencha a ficha (Parte VI) e some ao catálogo.</p>
     </div>
     <div class="meta">
-      <div>VERSÃO <b>2.3</b></div>
-      <div>DATA <b>09 de junho de 2026</b></div>
+      <div>VERSÃO <b>2.1</b></div>
+      <div>DATA <b>07 de julho de 2026</b></div>
       <div>DIREÇÃO <b>Tiago Toigo</b></div>
       <div>PRÓXIMA REVISÃO <b>a cada novo projeto</b></div>
       <div style="margin-top:10px;color:var(--orange);letter-spacing:.2em">#bea49er</div>
@@ -460,7 +433,6 @@ const CAT = {
   "Captação":{v:"--c-capt",op:"3 workshops + ciclos de mentoria especializada + evento final em SP. CS sem App. Ciclo longo (6+ meses).",pub:"Startups/PMEs em Ideação ou Growth."},
   "Capacitação":{v:"--c-capa",op:"Workshops + mentorias coletivas. Volume menor, ciclo curto (1–8 semanas). App PWA leve.",pub:"Gestores de Startup regionais ou jovens em faixa específica."},
   "Premiação":{v:"--c-prem",op:"Ciclo anual. App de Seleção + Avaliação + Logística de evento. Apoio por consultores externos.",pub:"Startups com faturamento ≤ R$4,8Mi/ano."},
-  "Seleção":{v:"--c-sele",op:"Triagem e ranqueamento de startups por algoritmo ponderado + banca, com bônus (ações afirmativas) e validação manual. Embarcada nos funis do Prêmio e do Capital, ou contratada de forma avulsa.",pub:"Lotes de startups inscritas a serem classificadas (ex.: as 32 do AM)."},
   "SoftwareHouse":{v:"--c-soft",op:"Escopo de App definido com o cliente, entrega em ciclos curtos. Sem CS e sem facilitação.",pub:"O próprio contratante."}
 };
 
@@ -485,17 +457,17 @@ const PROJ = [
   facil:"Tiago Toigo · Victor Motta", mentor:"Victor Motta · Diego Moeller · Giba Lopes",
   metrica:"Percentual em crescimento de Leads e Receita."},
 
- {n:3,nome:"BRDE Labs Ventures · ACATE",contr:"ACATE + BRDE",cat:"Captação",val:"Baixo",ini:"29/04",fim:"17/06",dur:"8 semanas",app:true,cs:true,
-  entrega:"Acelerar startups em Growth para captação, com seleção até o Investor Day (edição ACATE).",
+ {n:3,nome:"BRDE Ventures Labs",contr:"ACATE + BRDE",cat:"Captação",val:"Baixo",ini:"15/01",fim:"01/07",dur:"24 semanas",app:true,cs:true,
+  entrega:"Ajudar Startups a captar investimento.",
   promessa:"Capacitar Startups para captação de investimento.",
-  publico:"30 Startups em Growth (ACATE).",
-  estrutura:["8 semanas, 4 sprints","4 Masterclasses online (2h) + 4 Oficinas Hotseat (3h)","Toda quarta, 10h–12h","Seleção 30 → 15 para o Investor Day"],
+  publico:"30 Startups em Growth.",
+  estrutura:["8 semanas, 4 sprints","Aula e mentoria intercaladas","Toda quarta, 10h–12h"],
   appmods:["Camada Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
   csscope:["Grupo de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Dashboarding semanal","Coleta do NPS"],
   facil:"Marcelo Camara · Leandro Piazza", mentor:"—",
   metrica:"Pitch Deck pronto e NPS acima de 90."},
 
- {n:4,nome:"Capital Empreendedor — MG",contr:"SEBRAE MG",cat:"Captação",val:"Médio",ini:"21/04",fim:"25/11",dur:"~31 semanas · 721h",app:false,cs:true,
+ {n:4,nome:"Capital Empreendedor — MG",contr:"SEBRAE MG",cat:"Captação",val:"Baixo",ini:"21/03",fim:"24/11",dur:"35 semanas",app:false,cs:true,
   entrega:"Ajudar Startups e PMEs a captar investimento (estágio Escala).",
   promessa:"Acompanhamento coletivo, CS forte e impacto direto na estrutura de captação de uma rodada.",
   publico:"30 Startups/PMEs com CNPJ ativo em Growth.",
@@ -515,7 +487,7 @@ const PROJ = [
   facil:"Maicon Douglas · Maurício Moraes", mentor:"—",
   metrica:"App 100% funcional e aprovado pelo cliente."},
 
- {n:6,nome:"Capacitação em Vendas de Gestores",contr:"SEBRAE SP",cat:"Capacitação",val:"Baixo",ini:"20/05",fim:"21/05",dur:"1 semana",app:true,cs:true,
+ {n:6,nome:"Capacitação em Vendas de Gestores",contr:"SEBRAE SP",cat:"Capacitação",val:"Baixo",ini:"20/05",fim:"05/08",dur:"11 semanas",app:true,cs:true,
   entrega:"Capacitação de Gestores de São Paulo em vendas para Startups.",
   promessa:"Alavancar a competência dos Gestores em processo comercial e vendas para Startups.",
   publico:"Gestores de Startup de São Paulo.",
@@ -525,7 +497,7 @@ const PROJ = [
   facil:"Tiago Toigo · Victor Motta · Maicon Douglas", mentor:"—",
   metrica:"NPS > 90 e Gestores com Playbook de Vendas de Startups."},
 
- {n:7,nome:"Refresh",contr:"SEBRAE MG",cat:"Capacitação",val:"Baixo",ini:"21/05",fim:"17/07",dur:"8 semanas",app:true,cs:true,
+ {n:7,nome:"Refresh",contr:"SEBRAE MG",cat:"Capacitação",val:"Baixo",ini:"21/05",fim:"16/07",dur:"8 semanas",app:true,cs:true,
   entrega:"Capacitação de Gestores do Estado de Minas Gerais.",
   promessa:"Alavancar a competência dos Gestores regionais SEBRAE em Ecossistema de Inovação e Startups.",
   publico:"Gestores de Startup do Estado de Minas Gerais.",
@@ -535,7 +507,7 @@ const PROJ = [
   facil:"Tiago Toigo", mentor:"—",
   metrica:"NPS > 90 e Gestores com Playbook do Ecossistema Local."},
 
- {n:8,nome:"Jornada Startups",contr:"ACATE + SEBRAE SC",cat:"Aceleração",val:"Baixo",ini:"13/05",fim:"29/08",dur:"~15 semanas · 5ª edição",app:true,cs:true,
+ {n:8,nome:"Jornada Startups",contr:"ACATE + SEBRAE SC",cat:"Aceleração",val:"Baixo",ini:"17/03",fim:"28/08",dur:"23 semanas",app:true,cs:true,
   entrega:"Ajudar Startups a destravarem o processo comercial e melhorar as primeiras vendas.",
   promessa:"Acompanhamento coletivo, CS forte e impacto positivo na receita.",
   publico:"150 Startups/PMEs com mais de um ano de CNPJ ativo.",
@@ -545,7 +517,7 @@ const PROJ = [
   facil:"Victor Motta", mentor:"—",
   metrica:"Percentual em crescimento de Leads e Receita."},
 
- {n:9,nome:"Capital Empreendedor — RN",contr:"SEBRAE RN",cat:"Captação",val:"Baixo",ini:"22/04",fim:"25/11",dur:"~31 semanas · 491h",app:false,cs:true,
+ {n:9,nome:"Capital Empreendedor — RN",contr:"SEBRAE RN",cat:"Captação",val:"Baixo",ini:"22/04",fim:"24/11",dur:"31 semanas",app:false,cs:true,
   entrega:"Ajudar Startups e PMEs a captar investimento (estágio Ideação).",
   promessa:"Acompanhamento coletivo, CS forte e impacto direto na estrutura de captação.",
   publico:"30 Startups/PMEs com CNPJ ativo em Ideação.",
@@ -555,7 +527,7 @@ const PROJ = [
   facil:"Victor Motta", mentor:"A definir",
   metrica:"Startups com pitches prontos para investidores e NPS > 90."},
 
- {n:10,nome:"Capital Empreendedor + Tour Floripa",contr:"SEBRAE AM",cat:"Captação",val:"Baixo",ini:"04/06",fim:"25/11",dur:"25 semanas",app:false,cs:true,
+ {n:10,nome:"Capital Empreendedor + Tour Floripa",contr:"SEBRAE AM",cat:"Captação",val:"Baixo",ini:"22/04",fim:"24/11",dur:"31 semanas",app:false,cs:true,
   entrega:"Ajudar Startups e PMEs a captar investimento (Ideação) + Tour no ecossistema de Florianópolis.",
   promessa:"Acompanhamento coletivo, CS forte e captação + Missão Floripa ↔ Amazonas.",
   publico:"30 Startups/PMEs com CNPJ ativo em Ideação + Gestores do Amazonas.",
@@ -565,7 +537,7 @@ const PROJ = [
   facil:"Tiago Toigo", mentor:"A definir",
   metrica:"Startups com pitches prontos para investidores e NPS > 90."},
 
- {n:11,nome:"GoJovem!Go",contr:"SEBRAE GO",cat:"Capacitação",val:"Médio",ini:"08/07",fim:"12/08",dur:"5 semanas",app:true,cs:true,
+ {n:11,nome:"GoJovem!Go",contr:"SEBRAE GO",cat:"Capacitação",val:"Médio",ini:"13/04",fim:"01/09",dur:"20 semanas",app:true,cs:true,
   entrega:"Formar jovens empreendedores.",
   promessa:"Formar jovens empreendedores e premiar os 3 melhores projetos.",
   publico:"60 grupos de jovens de 18–29 anos em 4 perfis: Sucessor, Empreendedor, Empreendedor em Formação, Empreendedor em Potencial.",
@@ -585,7 +557,7 @@ const PROJ = [
   facil:"Tiago Toigo · Coordenadores dos CIs", mentor:"—",
   metrica:"NPS alto, presença > 80% e CNPJs ativos."},
 
- {n:13,nome:"Startup Zero",contr:"SCTI + SEBRAE/SC",cat:"Pré-Incubação",val:"Alto",ini:"10/08",fim:"12/12",dur:"18 semanas",app:true,cs:true,
+ {n:13,nome:"Startup Zero",contr:"SCTI",cat:"Pré-Incubação",val:"Alto",ini:"10/08",fim:"12/12",dur:"18 semanas",app:true,cs:true,
   entrega:"Startup University para 10 centros do Sul de Santa Catarina simultaneamente.",
   promessa:"Desenvolvimento e impacto econômico do Sul do Estado.",
   publico:"Aspirantes a founders com ideia de negócio ou Startups.",
@@ -595,129 +567,76 @@ const PROJ = [
   facil:"Tiago Toigo · Leandro Piazza · Victor Motta · Coordenadores", mentor:"—",
   metrica:"CNPJs criados, projetos desenvolvidos e NPS > 90."},
 
- {n:14,nome:"SATC Colearning · Hub",contr:"Incubadora Colearning · SATC (FAPESC)",cat:"SoftwareHouse",val:"Médio",ini:"02/06",fim:"18/12",dur:"~16 semanas",app:true,cs:false,novo:true,
-  entrega:"Diagnosticar as startups incubadas e entregar a plataforma digital do Hub + o Índice de Inovação Colearning.",
-  promessa:"Hub de inteligência de mercado pronto, com dashboards, área restrita e índice de inovação.",
-  publico:"Startups incubadas na Colearning / SATC (Edital FAPESC CP 59/2025).",
-  estrutura:["A-1 · Diagnóstico e Planejamento Estratégico","A-3 · Estruturação do Ambiente Digital (plataforma)","A-9 · Coleta e Análise / Índice de Inovação"],
-  appmods:["Dashboards interativos","Área restrita das startups","Relatórios (PDF) + banco de dados","Painel admin","Governança de dados (LGPD)"],
-  csscope:["Sem CS — entrega de produto/consultoria"],
+ {n:14,nome:"SATC FAPESC",contr:"SATC",cat:"SoftwareHouse",val:"N/A",ini:"02/06",fim:"10/11",dur:"23 semanas",app:true,cs:false,
+  entrega:"Criar um App estilo SUAI para Mentorias e Conexões.",
+  promessa:"Entregar um App pronto (modelo Software House).",
+  publico:"SATC e Startups da SATC.",
+  estrutura:["A definir"],
+  appmods:["Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Sem CS"],
   facil:"Maicon Douglas · Maurício Moraes", mentor:"—",
-  metrica:"Plataforma homologada em produção + Índice de Inovação operante."},
+  metrica:"App 100% funcional e aprovado pelo cliente."},
 
- {n:15,nome:"Unisenai",contr:"SEBRAE/SC · cliente IEL-SC / UniSENAI",cat:"Pré-Incubação",val:"Médio",ini:"20/05",fim:"10/12",dur:"2 edições · mai–dez",app:true,cs:true,novo:true,
-  entrega:"Startup Zero em 2 edições para docentes e discentes do UniSENAI, com metodologia de pré-incubação.",
-  promessa:"Desenvolvimento e impacto em inovação do UniSENAI.",
-  publico:"EPP/ME/MEI · Turma Docentes (manhã) e Turma Discentes (noite).",
-  estrutura:["2 edições · 20 encontros / 52h cada","8 sprints: Masterclass 2h + Oficina Hotseat 3h","Abertura híbrida (Floripa + online)","Revisão & Pré-Banca · Tutoria","Banca Final / Demo Day híbrido"],
+ {n:15,nome:"Unisenai",contr:"UNISENAI",cat:"Pré-Incubação",val:"Médio",ini:"10/08",fim:"14/11",dur:"14 semanas",app:true,cs:true,
+  entrega:"Startup Zero para docentes e discentes do Unisenai, com a metodologia de Startups.",
+  promessa:"Desenvolvimento e impacto em inovação do Unisenai.",
+  publico:"Discentes e Docentes do Unisenai.",
+  estrutura:["16 Workshops","16 Oficinas online","1 Pitch Final em Florianópolis"],
   appmods:["Perfil Admin","Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Gestão de Inscrições","Perfil do Usuário"],
-  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos GTs","Métricas","Gravações","Dashboarding semanal","Coleta de NPS final"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos GTs","Métricas","Gravações","Dashboarding semanal p/ Centros de Inovação","Coleta de NPS final"],
   facil:"Tiago Toigo · Leandro Piazza · Victor Motta · Coordenadores", mentor:"—",
-  metrica:"CNPJs/projetos desenvolvidos e NPS > 90."},
+  metrica:"CNPJs criados, projetos desenvolvidos e NPS > 90."},
 
- {n:16,nome:"Startup Zero · Turma SATC",contr:"SEBRAE/SC (Ag. Tubarão) + SATC",cat:"Pré-Incubação",val:"Médio",ini:"03/06",fim:"31/10",dur:"~21 semanas",app:true,cs:true,novo:true,
-  entrega:"Pré-incubação Startup Zero para founders e gestores do ecossistema SATC em Criciúma.",
-  promessa:"Negócios inovadores estruturados, do diagnóstico ao pitch final.",
-  publico:"Founders e gestores de startups e pequenos negócios da região de Criciúma.",
-  estrutura:["8 sprints: Masterclass 2h online + Oficina Hotseat 3h","4 momentos presenciais em Criciúma","Abertura (07/07) · Oficina Produto (06/08)","Pitch Lab (08/09) · Demo Day (15/09)","21 encontros (terças e quintas)"],
-  appmods:["Central de conteúdos on-demand","Diagnóstico de maturidade","Dashboard de engajamento","Gestão de portfólio e KPIs","Submissão para Banca Final"],
-  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Setup do App","Follow-ups","Métricas","Gravações","Dashboarding semanal","Coleta do NPS"],
-  facil:"Leandro Piazza (resp. técnico) · Time 49", mentor:"—",
-  metrica:"Plano estruturado por startup + Demo Day com banca."},
+ {n:16,nome:"Pré-Incubação Sebrae PE",contr:"SEBRAE PE",cat:"Pré-Incubação",val:"Alto",ini:"10/08",fim:"04/12",dur:"17 semanas",app:true,cs:true,novo:true,
+  entrega:"Pré-incubação de 10 times de estudantes egressos das metodologias de ideação do Programa de Educação Empreendedora do Sebrae/PE (Jovens de Impacto, Miniempresa, Liga Jovem).",
+  promessa:"Amadurecer os projetos da ideação à validação de MVPs e à gestão de startup. Kickoff solene (10/08) e Demoday (04/12) sob operação da 49.",
+  publico:"Até 50 jovens empreendedores de alto potencial (10 times), egressos de Liga Jovem, Jovens de Impacto e Miniempresa do Sebrae/PE.",
+  estrutura:["Kickoff solene de abertura (10/08)","Trilha metodológica Playbook First Stage (Take Off → validação de MVP)","Mentoria, monitoramento e acompanhamento dos 10 times","Web App proprietário White Label com stack de IA","Demoday de encerramento (04/12)"],
+  appmods:["Perfil Admin","Perfil Startup/Time","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Gestão de Inscrições","Perfil do Usuário"],
+  csscope:["Grupos de WhatsApp","Links das aulas","Acessos iniciais","Substituições de desistentes","Setup do App","Follow-ups","Grupos dos times","Métricas","Gravações","Dashboarding semanal p/ Sebrae PE","Coleta do NPS final"],
+  facil:"A definir", mentor:"—",
+  metrica:"10 times pré-incubados com MVPs validados e pitch no Demoday; NPS alto."},
 
- {n:17,nome:"BRDE Labs · Tecnopuc",contr:"BRDE + Tecnopuc",cat:"Captação",val:"Baixo",ini:"29/04",fim:"30/06",dur:"a confirmar",app:false,cs:true,
-  entrega:"Consultorias 1:1 de vendas e pitch para as startups aceleradas no BRDE Labs (edição Tecnopuc).",
-  promessa:"Acelerar as vendas das startups do programa com mentoria individual dedicada.",
-  publico:"17 Startups participantes confirmadas.",
-  estrutura:["2 temáticas 1:1 (2h cada): Vendas & Precificação · Pitch de Vendas & Relacionamento","5 mentores especialistas com carteira dedicada","Agendamento direto com o mentor responsável"],
+ {n:17,nome:"Aceleração Comercial Bahia",contr:"Parque Tecnológico da Bahia (PTECBA)",cat:"Aceleração",val:"Médio",ini:"01/06",fim:"30/09",dur:"17 semanas",app:true,cs:true,novo:true,
+  entrega:"Aceleração comercial de 8–10 startups baianas em estágio de go-to-market: ICP, oferta irresistível, máquina de vendas e playbook comercial.",
+  promessa:"Startups com máquina de vendas estruturada, mais leads e conversões, e mais preparadas para captação de investimento.",
+  publico:"8 a 10 startups apoiadas pelo Parque Tecnológico da Bahia.",
+  estrutura:["Plataforma WebApp com algoritmo funcional","10 trilhas de conteúdo síncrono ao vivo (1h cada)","Diagnóstico de gargalos de vendas","10 mentorias individuais por startup","Workshop presencial imersivo de 4 dias","8 mentorias coletivas online (4h cada)"],
+  appmods:["Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Grupo de WhatsApp","Links das aulas","Acessos iniciais","Setup do App","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Coleta do NPS"],
+  facil:"A definir", mentor:"—",
+  metrica:"ICPs e playbooks comerciais definidos por startup; aumento de leads e conversões."},
+
+ {n:18,nome:"Fator S Pré-Acelera — Paracatu",contr:"SEBRAE Minas",cat:"Aceleração",val:"Baixo",ini:"10/08",fim:"05/11",dur:"13 semanas",app:true,cs:true,novo:true,
+  entrega:"Pré-aceleração de 6 startups de Paracatu (MG) — das primeiras validações às primeiras vendas e à conexão com o mercado.",
+  promessa:"6 sprints (workshop + mentoria) convergindo num one page estratégico por startup. Workshops presenciais conduzidos 100% por Leandro Piazza.",
+  publico:"6 startups de Paracatu/MG, no âmbito do Fator S do SEBRAE Minas.",
+  estrutura:["Nivelamento (meetup de integração)","6 sprints: WS1 Modelo de Negócios · WS2 Vender para a persona · WS3 Validação do MVP · WS4 Regulatório · WS5 Viabilidade Financeira · WS6 Pitch","3 viagens presenciais (WS 19h–23h)","Mentorias online 1:1 (2h/tema, 12h por startup)","16h de aulas gravadas + slides na plataforma"],
+  appmods:["Perfil Startup/PME","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Grupo de WhatsApp","Links das aulas","Envio do Formulário Super Founder","Follow-ups","Acompanhamento de grupo","Métricas","Gravações","Coleta do NPS"],
+  facil:"Leandro Piazza", mentor:"Especialistas Jurídico e Finanças (A definir)",
+  metrica:"6 one pagers estratégicos prontos e startups conectadas ao mercado."},
+
+ {n:19,nome:"Programa Centelha — Sebrae RS",contr:"SEBRAE RS",cat:"Pré-Incubação",val:"A definir",ini:"01/09",fim:"18/12",dur:"a confirmar",app:true,cs:true,novo:true,
+  entrega:"Mobilização e pré-incubação de ideias inovadoras no Rio Grande do Sul: da ideação à criação de startups. Contrato em fechamento — escopo a confirmar.",
+  promessa:"Capacitar empreendedores em estágio de ideação e estruturar projetos inovadores rumo à criação de negócios. Detalhes em definição com o Sebrae RS.",
+  publico:"Empreendedores em estágio de ideação do Rio Grande do Sul (perfil e volume a confirmar).",
+  estrutura:["Escopo em definição — contrato em fase de fechamento","Mobilização e capacitação de ideias inovadoras","Trilha de pré-incubação (a detalhar)","Pitch / seleção final (a detalhar)"],
+  appmods:["Perfil Admin","Perfil Startup/Time","Atividades","Diagnósticos","Cronograma","NPS","Conteúdos Extras","Perfil do Usuário"],
+  csscope:["Escopo de CS a definir conforme fechamento do contrato"],
+  facil:"A definir", mentor:"—",
+  metrica:"A definir com o Sebrae RS (contrato em fechamento)."},
+
+ {n:20,nome:"BRDE Labs 2.0 — Tecnopuc",contr:"BRDE + Tecnopuc/PUCRS",cat:"Aceleração",val:"Baixo",ini:"25/05",fim:"31/07",dur:"10 semanas",app:false,cs:true,
+  entrega:"Consultorias comerciais individuais (1:1) para as 17 startups aceleradas no BRDE Labs 2.0 (Tecnopuc/PUCRS), nas temáticas de Vendas & Precificação e Pitch de Vendas & Relacionamento.",
+  promessa:"Destravar a estratégia de vendas, a precificação e o discurso comercial de cada startup, com um mentor dedicado por carteira.",
+  publico:"17 startups aceleradas no BRDE Labs 2.0 (Tecnopuc, Porto Alegre/RS), segmentadas em Mais Inicial, Em Crescimento e Top Escala.",
+  estrutura:["2 temáticas comerciais, 2h de consultoria 1:1 cada","Cada startup participa de uma ou das duas temáticas","Ordem: inicia sempre por Vendas & Precificação","5 mentores especialistas por carteira de startups","Agendamento por Google Calendar; gravações no Drive"],
   appmods:[],
-  csscope:["Distribuição das carteiras por mentor","Links de agenda por mentor","Acompanhamento das consultorias","Coleta do NPS"],
-  facil:"Alan Nascimento · Leandro Piazza · Marcelo Camara · Tiago Toigo · Victor Motta", mentor:"Alan Nascimento · Leandro Piazza · Marcelo Camara · Tiago Toigo · Victor Motta",
-  metrica:"Consultorias realizadas e evolução comercial das 17 startups."}
+  csscope:["Cruzamento startup × mentor","Links de agendamento (Google Calendar)","Controle de mentorias","Gravações no Drive","Follow-ups","Métricas e score de maturidade","Coleta do NPS"],
+  facil:"Alan Nascimento · Leandro Piazza · Marcelo Camara · Tiago Toigo · Victor Motta", mentor:"—",
+  metrica:"17 startups com estratégia de vendas/precificação e pitch comercial ajustados."}
 ];
-
-/* ===== PLANOS DE EXECUÇÃO (planos de trabalho oficiais) ===== */
-/* tipos de bloco: kv:[[r,v]] · lista:[..] · etapas:[[quando,oque]] */
-const PLANO = {
- 1:{resumo:"Operação integral do prêmio nacional pela 49 — da inscrição ao palco do Startup Summit. Parceiros: TXM (avaliadores) e MOA Ventures (investidores).",
-   blocos:[
-    {t:"Funil de seleção",etapas:[["Inscritas","até 2.500 — válidas e processadas"],["Top 1.000","trilha completa + credencial do evento"],["Top 300","preparação p/ investimento, Pitch Training e Rodadas"],["Top 100","Investment Score + Book de Startups"],["Top 30","semifinal nas batalhas de pitch presenciais"],["Top 10","finalistas de palco"],["Top 3","vencedoras do prêmio"]]},
-    {t:"Fases de execução",etapas:[["Março","Tecnologia: White Label, APIs/Webhooks, validação CNPJ, algoritmo de ranqueamento (20% da nota), bonificação por ações afirmativas, POC dos 17 requisitos"],["Abr–Mai","Atração: meta 2.500–5.000 inscrições, Help Desk (SLA 24h), 10 hubs nas 5 regiões"],["Junho","Seleção Top 1.000: banca curada pela TXM, mín. 2 avaliações humanas por startup"]]},
-    {t:"Equipe 49 & histórico",kv:[["Equipe","Rafael Peck (contato SEBRAE/SC) · Vicky (coord. geral) · Tiago Toigo (trilha) · Maicon Douglas (TI)"],["Edição 2025","3.200+ inscrições · ~1.000 conexões · R$280Mi em intenções · NPS > 85"]]}
-   ]},
- 2:{resumo:"Contrato plurianual SEBRAE-SP (aditivo de 24 meses, nov/2025–nov/2027). A edição 2026 roda de fev a mai.",
-   blocos:[
-    {t:"Itens contratuais (24 meses)",kv:[["Setup plataforma WEB APP","R$ 70.000 (2×)"],["Seleção","R$ 19.760"],["Capacitação Assíncrona · 32h","R$ 31.067"],["Capacitação Síncrona · 40h","R$ 84.664"],["Mentoria · 48h","R$ 101.597"],["Total","R$ 307.088 · reajuste IPCA"]]},
-    {t:"Aditivo",lista:["+25% em Capacitação Síncrona","+50% em Mentoria"]}
-   ]},
- 3:{resumo:"Aceleração 100% online (edição ACATE) focada em tração e conexão com investidores, no modelo Startup Zero modular.",
-   blocos:[
-    {t:"Estrutura (modelo modular)",lista:["4 Masterclasses online (2h): Go-to-Market, Growth, Funil de Vendas, Pitch Deck","4 Oficinas Hotseat (3h): diagnóstico em 'cadeira quente'","Healthscore por algoritmo (engajamento, frameworks, maturidade)"]},
-    {t:"Funil → Investor Day",kv:[["Seleção","30 participantes (submissão na plataforma)"],["Investor Day","15 melhores por desempenho"]]},
-    {t:"Investimento",kv:[["Contrato","R$ 45.000 · 269h · sem deslocamento"],["Extras","gravações na plataforma · escalável até 60"]]}
-   ]},
- 17:{resumo:"Consultorias individuais de vendas e pitch (BRDE Labs 2.0 · edição Tecnopuc) para as 17 startups aceleradas, com carteira dedicada por mentor. Datas a confirmar.",
-   blocos:[
-    {t:"Visão geral",kv:[["Startups confirmadas","17"],["Mentores especialistas","5"],["Temáticas 1:1 (2h)","Vendas & Precificação · Pitch de Vendas & Relacionamento"],["Ordem","quem faz as duas inicia por Vendas & Precificação"]]},
-    {t:"Carteiras de mentores",lista:["Alan Nascimento — 3 startups (MultiLab Virtual, Hyven, GovTools)","Leandro Piazza — 3 (GranaAI, PIX FORCE, Eletrodara)","Marcelo Camara — 4 (Vent, Energia das Coisas, Floki, criativa.app)","Tiago Toigo — 4 (Mercado Net Zero, WECONECTA, TerraMares, Flakeflow)","Victor Motta — 3 (DataPay, Ozone Engenharia, TEG)"]},
-    {t:"Distribuição por temática",kv:[["2 temáticas (4h)","11 startups"],["Só Pitch & Relacionamento","5 startups"],["Só Vendas & Precificação","1 startup (Energia das Coisas)"]]}
-   ]},
- 4:{resumo:"Maior escala do Capital até hoje — até 50 (Módulo 1) + 10 (Módulo 2), 721h, à distância, culminando no Deal Day em SP.",
-   blocos:[
-    {t:"Circuitos",etapas:[["21–27/04","Decolagem: lançamento, inscrições e seleção"],["04/05–19/06","Rota da Inovação (M1): Fábrica de Pitches (3 quintas, 75h) + Arena + Scan 360"],["22/06–02/10","Caminho da Transformação (M2): 4 mentorias temáticas (coletiva + individual)"],["09/10–25/11","Onda de Crescimento: finalistas + Deal Day em SP"]]},
-    {t:"Referência",kv:[["AM 2025","13 startups · 5 mentorias individuais · 3 ao Deal Day · NPS 100"]]}
-   ]},
- 6:{resumo:"Workshop presencial UECS, em 2 dias na sede do Sebrae SP — formar gestores para diagnosticar startups.",
-   blocos:[
-    {t:"Estrutura · 16h (4 blocos de 4h)",etapas:[["Bloco 1","Funil de Marketing e Vendas"],["Bloco 2","Playbook de Vendas"],["Bloco 3","Técnicas de Vendas (cases reais)"],["Bloco 4","Growth"]]},
-    {t:"Operação",kv:[["Público","33 gestores dos ERs"],["Datas","20 e 21/05 · auditório Sebrae SP"],["Entregável","Plano de 30 dias por ER"]]}
-   ]},
- 7:{resumo:"Trilha que forma orientadores de startups (não founders): workshop denso + sabatina hotseat a cada semana.",
-   blocos:[
-    {t:"8 sprints · 20h síncronas",etapas:[["21–22/05","Fundamentos e tendências 2026"],["28–29/05","Propostas de valor (ICP, Mapa de Valor)"],["11–12/06","Unit economics (SaaS/Deep Tech)"],["18–19/06","MVP em 2026 (MVP Token)"],["25–26/06","Go-to-market"],["02–03/07","Fundraising + Cap Table"],["09–10/07","Internacionalização"],["16–17/07","Governança e PI"]]},
-    {t:"Formato & entregável",kv:[["Ciclo","Workshop qui 19h30 (1h30) + Hotseat sex 11h (1h)"],["Entregável","portfólio de 8 instrumentos defendidos em sabatina"],["Stack ensinada","vibe coding (Claude Code, Cursor, Lovable, v0, Bolt) · no-code (Bubble, Webflow, Glide) · automação (n8n, Make, ActiveCampaign)"]]}
-   ]},
- 8:{resumo:"5ª edição — extensão do Startup SC (ACATE + Sebrae/SC). Foco em startups validando ou iniciando faturamento.",
-   blocos:[
-    {t:"Cronograma",etapas:[["13/05","Kick-off"],["28/05","WS1 Startup Layers"],["04/06","WS2 Early Adopters"],["11/06","Mentoria 1 — Problema + Proposta de Valor"],["18/06","WS3 Negócios Escaláveis"],["25/06","WS4 MVP + Oferta Irresistível"],["02/07","Mentoria 2 — MVP + Estratégia"],["09/07","WS5 Marketing & Vendas"],["16/07","Mentoria 3 — Marketing & Vendas"],["23/07","WS6 Pitch Deck"],["30/07","Mentoria 4 — Pitch Deck"],["06/08","Diagnóstico Final + Pitch"],["29/08","Evento de encerramento + Demoday"]]},
-    {t:"Conexão & perks",lista:["Rede de mentores (50+ especialistas)","ACATE: Verticais, GTs, LinkLab, MIDITEC","80+ parceiros de perks (Google, HubSpot, DELL)"]}
-   ]},
- 9:{resumo:"Capital no RN — até 30 (M1) + 5 (M2), 491h, à distância (ter/qui 19h), com paralelização de turnos. Deal Day em SP.",
-   blocos:[
-    {t:"Cronograma macro",etapas:[["22/04–06/06","Lançamento e inscrições"],["07–08/06","Seleção das 30"],["16–30/06","Fábrica de Pitches (3 terças)"],["06–07/07","Arena de Pitches"],["08–17/07","Scan 360 → 5 qualificadas"],["21/07–28/08","Mentoria Comportamental"],["11/08–18/09","Mentoria Máquina de Vendas"],["01/09–01/10","Mentoria Finanças e Valuation"],["03/09–02/10","Mentoria Jurídica e Governança"],["09–25/10","Seleção de finalistas"],["27/10–13/11","Envio de OnePages"],["24–25/11","Deal Day — São Paulo"],["out/2027","Evolução 360 (impacto 12 meses)"]]},
-    {t:"Estratégia de paralelização",lista:["Coletivas à noite enquanto individuais rodam de dia","Economia de ~4 semanas no cronograma"]}
-   ]},
- 10:{resumo:"Capital no AM + missão Floripa↔Amazonas. Seleção de 32 inscrições por algoritmo ponderado + validação manual.",
-   blocos:[
-    {t:"Metodologia de seleção",lista:["Média ponderada de 12 critérios (peso maior: faturamento, MRR, clientes)","Bônus +10% mulheres founders · +10% participação SEBRAE","Eliminação (×0) se já passou por Mentorias/Circuito","Validação Geral manual: Ideação, Escala e CNPJ irregular"]},
-    {t:"Resultado da triagem (32 inscrições)",kv:[["Recomendadas","4 — INGALATE, Piracy, Apoena, Águila Hikari"],["Para análise","8"],["Em validação manual","13"],["Não recomendadas","5"],["Desclassificadas","2"]]},
-    {t:"Eventos",lista:["Startup Summit (26–28/08)","Deal Day em SP","Organização do ecossistema de Floripa p/ gestores AM"]}
-   ]},
- 13:{resumo:"Projeto de Apoio à Inovação às MPEs do Sul Catarinense — financiado pela SCTI (R$750k), coordenado pelo Sebrae/SC, executado pela 49. Híbrido em 10 municípios.",
-   blocos:[
-    {t:"Metas & desembolso",etapas:[["16–26/07 · R$300k","Meta 1 — Plataforma + Diagnóstico (200 diagnósticos)"],["22–25/06 · R$50k","Meta 2 — Formação de Gestores de Inovação Municipal (5–10)"],["17/08–19/10 · R$150k","Meta 3 — Trilha de 8 módulos (200 treinados)"],["19/08–30/10 · R$200k","Meta 4 — Imersão presencial em 10 cidades (100 roteiros)"],["09–20/11 · R$50k","Meta 5 — Avaliação de impactos (100 empresas com nova ferramenta)"]]},
-    {t:"Metas quantitativas",kv:[["Funil","até 400 inscritos · 300 selecionados · 200 concluintes"],["Aporte total","R$ 750.000 (SCTI)"]]},
-    {t:"Trilha — 8 módulos",lista:["Take Off · Early Adopter · Business Performance · Product Stage","Lead Growth · Go-to-Market · Fundraising · Demo Day"]},
-    {t:"Governança",kv:[["Coordenação","Sebrae/SC (estratégica + supervisão)"],["Execução","49 educação (via SGF)"],["Ponto focal","gestores municipais de inovação"]]}
-   ]},
- 14:{resumo:"Hub de Tendências e Negócios da Incubadora Colearning/SATC (Edital FAPESC CP 59/2025). Dois contratos encadeados.",
-   blocos:[
-    {t:"Contratos",kv:[["Contrato 1 (A-1 + A-3)","R$ 15.000 — diagnóstico + ambiente digital"],["Contrato 2 (A-9)","R$ 20.000 — Índice de Inovação"],["Vigência","02/06 a 18/12/2026"]]},
-    {t:"Fases (16 semanas)",etapas:[["Sem 1","Kickoff & Planejamento"],["Sem 2–4","Diagnóstico (A-1) — survey, entrevistas, relatório"],["Sem 5–6","Planejamento, KPIs e arquitetura conceitual"],["Sem 6","► Validação Entrega 1"],["Sem 7–8","Design & Arquitetura técnica (A-3)"],["Sem 9–12","Desenvolvimento (dashboards, área restrita, relatórios)"],["Sem 13","Homologação + governança de dados + treinamento"],["Sem 14","► Validação Entrega 2 (termo de aceite)"],["Sem 15–16","Pós-entrega, suporte e NPS"]]},
-    {t:"Faturamento",lista:["1ª parcela R$ 7.500 (sem 2)","2ª parcela R$ 7.500 (após Entrega 2)"]}
-   ]},
- 15:{resumo:"2 edições do Startup Zero para o IEL-SC / UniSENAI. Modalidade Online (Amplo & Hotseat) com Abertura e Demo Day híbridos em Florianópolis.",
-   blocos:[
-    {t:"Estrutura por edição",kv:[["Encontros","20 síncronos · 52h ao vivo"],["Jornada","8 sprints (Masterclass 2h + Oficina Hotseat 3h)"],["Turmas","Edição 1 — Docentes (manhã) · Edição 2 — Discentes (noite)"]]},
-    {t:"Formato dos encontros",etapas:[["Abertura","Híbrido · Floripa + online"],["8 Masterclasses","Online (síncrono)"],["8 Oficinas Hotseat","Online (síncrono)"],["Revisão & Tutoria","Online (síncrono)"],["Banca Final / Demo Day","Híbrido · Floripa + online"]]},
-    {t:"Contrato & plataforma",kv:[["Contrato SEBRAE/SC","nº SC0520260532 · LL.2749.26"],["Período","20/05 a 10/12/2026"],["Plataforma","PWA em GlideApps + API OpenAI"]]}
-   ]},
- 16:{resumo:"Pré-incubação Startup Zero — Turma SATC em Criciúma. Online (Amplo & Hotseat) com 4 momentos presenciais.",
-   blocos:[
-    {t:"Cronograma · 8 sprints (ter/qui)",etapas:[["Sem 1 · 07–09/07","Abertura (presencial) + Mercado"],["Sem 2 · 14–16/07","Posicionamento (TAM/SAM/SOM)"],["Sem 3 · 21–23/07","ICP"],["Sem 4 · 28–30/07","Tração"],["Sem 5 · 04–06/08","Produto & Validação (oficina presencial 06/08)"],["Sem 6 · 11–13/08","Produto (MVP)"],["Sem 7 · 18–20/08","Automação"],["Sem 8 · 25–27/08","Vendas"],["Sem 9 · 01–03/09","Escala (KPIs)"],["08–10/09","Pitch Lab + Pré-Banca (presencial 08/09)"],["15/09","Demo Day · Banca Final (presencial)"]]},
-    {t:"Identificação & valores",kv:[["Contrato","SC0620260068 · LL.3065.26"],["Consultoria","3× R$ 20.889"],["Instrutoria","R$ 7.722"],["Total","R$ 70.389"]]}
-   ]}
-};
 
 const PILARES = [
  ["Categoria","Em qual taxonomia o projeto se encaixa. Define o padrão operacional que se aplica."],
@@ -770,12 +689,12 @@ const TPL = [
 ];
 
 const ALERTS = [
- ["Abril–Maio","Largada da captação: Capital MG (21/04) e Capital RN (22/04) abrem inscrições, e Start, Refresh, Cap.Vendas e Jornada rodam juntos. Preparar plataformas e seleção com antecedência."],
- ["Junho","Pico de sobreposição: 12+ frentes simultâneas — BRDE/consultorias, Scale IA, SATC Colearning (02/06), SATC Turma SATC (03/06), além das Capital MG/RN/AM. Janela crítica para CS e Conteúdo."],
- ["Julho–Agosto","Entrada da pré-incubação: GoJovem (08/07), Nascer (21/07), Startup Zero SCTI e início das oficinas presenciais SATC + Startup Summit (26–28/08). Validar agendas com 30 dias."],
- ["Setembro–Novembro","Reta de captação: mentorias temáticas + Deal Days. Encerram juntos Cap.Emp MG/AM/RN + Nascer + Turma SATC (31/10) + Unisenai. Pico de NPS e relatórios finais."],
- ["Dezembro","Startup Zero SCTI (12/12), Unisenai (10/12), SATC Colearning (18/12) e Prêmio Sebrae (01/12) fecham o ano. Logística do Summit e premiação concentradas."],
- ["Fundo de ano","Prêmio Sebrae roda o ano inteiro como projeto de fundo: não bloqueia facilitação, mas demanda Tech contínuo."]
+ ["Julho (agora)","Encerram Refresh (16/07), Capacitação de Vendas de Gestores (05/08) e as consultorias do BRDE Labs 2.0 (31/07); Nascer abre em 23/07 e Centelha RS segue em fechamento de contrato. Fechar escopos e agendas de agosto."],
+ ["Agosto — pico de entradas","Entrada simultânea em 10/08: Startup Zero, Unisenai, Pré-Incubação Sebrae PE (Kickoff) e Fator S Paracatu (Viagem 1). + Startup Summit (24–28/08). Validar agendas dos facilitadores com 30 dias de antecedência."],
+ ["Setembro","Encerram Aceleração Bahia (30/09) e GoJovem (01/09). Mentorias de Paracatu e trilha PSS26 concentradas."],
+ ["Novembro","Encerram juntos: Cap.Emp MG/AM/RN (24/11) + Unisenai (14/11) + Paracatu (05/11) + SATC (10/11). Pico de coleta de NPS e relatórios finais."],
+ ["Dezembro","Startup Zero (12/12), Prêmio Sebrae (01/12), Sebrae PE Demoday (04/12) e Centelha RS (18/12) fecham o ano. Logística de Summit e premiações concentradas."],
+ ["Novos nesta revisão","4 projetos entraram no portfólio: Sebrae PE, Aceleração Bahia, Fator S Paracatu e Centelha RS. Centelha ainda com escopo/datas a confirmar."]
 ];
 
 /* =================== HELPERS =================== */
@@ -786,7 +705,7 @@ const YEAR_DAYS=365;
 
 /* =================== HERO STATS =================== */
 const stats=[[PROJ.length,"projetos ativos"],[Object.keys(CAT).length,"categorias"],
- [PROJ.filter(p=>p.app).length,"com App PWA"],[PROJ.filter(p=>p.cs).length,"com CS"],[Object.keys(PLANO).length,"planos de execução"]];
+ [PROJ.filter(p=>p.app).length,"com App PWA"],[PROJ.filter(p=>p.cs).length,"com CS"],[PROJ.filter(p=>p.novo).length,"novos nesta revisão"]];
 $("#hero-stats").innerHTML=stats.map(s=>`<div class="stat reveal"><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join("");
 
 /* =================== NAV =================== */
@@ -800,8 +719,7 @@ $("#pilares").innerHTML=PILARES.map((p,i)=>`<div class="card pilar reveal"><div 
 
 /* =================== CATEGORIAS =================== */
 $("#cats").innerHTML=Object.entries(CAT).map(([nome,c])=>{
-  const arr=PROJ.filter(p=>p.cat===nome);
-  const ps=arr.length?arr.map(p=>p.nome).join(" · "):"Serviço transversal — ainda sem projeto dedicado no portfólio.";
+  const ps=PROJ.filter(p=>p.cat===nome).map(p=>p.nome).join(" · ");
   return `<div class="card cat reveal" style="--cc:var(${c.v})" data-cat="${nome}">
     <span class="ctag">${nome}</span>
     <div class="kv"><b>Padrão</b><span>${c.op}</span></div>
@@ -835,7 +753,6 @@ $("#filters").innerHTML=Object.keys(CAT).map(c=>`<button class="chip" data-cat="
 $("#filters2").innerHTML=`
  <button class="chip gen" data-flag="app">Com App</button>
  <button class="chip gen" data-flag="cs">Com CS</button>
- <button class="chip gen" data-flag="plano">Com plano de execução</button>
  <button class="chip gen" data-flag="novo">Novos 2026</button>
  <button class="chip gen" data-flag="clear">Limpar filtros</button>`;
 
@@ -844,17 +761,16 @@ function syncChips(){
   document.querySelectorAll('#filters .chip').forEach(c=>c.classList.toggle("on",state.cats.has(c.dataset.cat)));
   document.querySelectorAll('#filters2 .chip').forEach(c=>{
     const f=c.dataset.flag;
-    c.classList.toggle("on",(f==="app"&&state.app)||(f==="cs"&&state.cs)||(f==="plano"&&state.plano)||(f==="novo"&&state.novo));
+    c.classList.toggle("on",(f==="app"&&state.app)||(f==="cs"&&state.cs)||(f==="novo"&&state.novo));
   });
 }
 $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b)return;
   const c=b.dataset.cat; state.cats.has(c)?state.cats.delete(c):state.cats.add(c); syncChips(); renderCatalog();});
 $("#filters2").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b)return;
   const f=b.dataset.flag;
-  if(f==="clear"){state={cats:new Set(),search:"",app:null,cs:null,novo:null,plano:null}; activeTeam=null; $("#search").value="";}
+  if(f==="clear"){state={cats:new Set(),search:"",app:null,cs:null,novo:null}; activeTeam=null; $("#search").value="";}
   else if(f==="app")state.app=state.app?null:true;
   else if(f==="cs")state.cs=state.cs?null:true;
-  else if(f==="plano")state.plano=state.plano?null:true;
   else if(f==="novo")state.novo=state.novo?null:true;
   syncChips(); renderCatalog();});
 $("#search").addEventListener("input",e=>{state.search=e.target.value.toLowerCase(); renderCatalog();});
@@ -864,7 +780,6 @@ function matchProj(p){
   if(state.app && !p.app)return false;
   if(state.cs && !p.cs)return false;
   if(state.novo && !p.novo)return false;
-  if(state.plano && !PLANO[p.n])return false;
   if(activeTeam && !activeTeam.cond(p))return false;
   if(state.search){const hay=(p.nome+" "+p.contr+" "+p.facil+" "+p.mentor+" "+p.cat+" "+p.entrega).toLowerCase();
     if(!hay.includes(state.search))return false;}
@@ -886,7 +801,6 @@ function renderCatalog(){
        ${p.val!=='N/A'?`<span class="tag val-${p.val}">${p.val}</span>`:`<span class="tag">N/A</span>`}
        <span class="tag dates">${p.ini}–${p.fim}</span>
      </div>
-     ${PLANO[p.n]?`<span class="plano-flag">PLANO DE EXECUÇÃO ✦</span>`:""}
    </div>`).join("") || `<div class="card" style="grid-column:1/-1;text-align:center;color:var(--muted)">Nenhum projeto com esses filtros.</div>`;
 }
 $("#catalog").addEventListener("click",e=>{const c=e.target.closest(".proj"); if(c)openModal(+c.dataset.id);});
@@ -894,23 +808,6 @@ $("#catalog").addEventListener("click",e=>{const c=e.target.closest(".proj"); if
 /* =================== MODAL =================== */
 function teamsFor(p){
   return TEAMS.map(t=>({nome:t.nome,on:t.cond(p)}));
-}
-function renderPlano(id){
-  const pl=PLANO[id]; if(!pl) return "";
-  const PLANO_DOC={1:"premio-sebrae.pdf",2:"start-primeiras-vendas.pdf",3:"brde-ventures-acate.pdf",4:"capital-empreendedor-mg.pdf",6:"capacitacao-gestores-sp.pdf",7:"refresh-sebrae-mg.pdf",8:"jornada-startups.pdf",9:"capital-empreendedor-rn.pdf",10:"capital-empreendedor-am.xlsx",13:"startup-zero-scti-sul.pdf",14:"satc-colearning.pdf",15:"unisenai.pdf",16:"startup-zero-turma-satc.pdf",17:"brde-labs-tecnopuc.pdf"};
-  const blocks=pl.blocos.map(b=>{
-    let inner="";
-    if(b.kv) inner=`<div class="pl-kv">${b.kv.map(r=>`<div class="pl-row"><span class="pl-k">${r[0]}</span><span class="pl-v">${r[1]}</span></div>`).join("")}</div>`;
-    else if(b.lista) inner=`<ul class="pl-list">${b.lista.map(x=>`<li>${x}</li>`).join("")}</ul>`;
-    else if(b.etapas) inner=`<div class="pl-steps">${b.etapas.map(e=>`<div class="pl-step"><span class="pl-when">${e[0]}</span><span class="pl-what">${e[1]}</span></div>`).join("")}</div>`;
-    return `<div class="pl-block"><div class="pl-bt">${b.t}</div>${inner}</div>`;
-  }).join("");
-  return `<div class="plano">
-    <div class="plano-head"><span class="plano-tag">Plano de Execução</span></div>
-    <p class="plano-resumo">${pl.resumo}</p>
-    ${blocks}
-    ${PLANO_DOC[id]?`<a class="plano-doc" href="planos/${PLANO_DOC[id]}" target="_blank" rel="noopener">📄 Acesse o plano de trabalho para entender mais →</a>`:""}
-  </div>`;
 }
 function openModal(id){
   const p=PROJ.find(x=>x.n===id);
@@ -936,7 +833,6 @@ function openModal(id){
        ${acts.map(a=>`<span class="pa ${a.on?'on':''}">${a.nome} ${a.on?'✓':'—'}</span>`).join("")}
      </div></div></div>
      ${rows.map(r=>`<div class="frow"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join("")}
-     ${renderPlano(p.n)}
    </div>`;
   $("#overlay").classList.add("open"); document.body.style.overflow="hidden";
   $("#modal .modal-close").focus();
@@ -949,7 +845,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 /* =================== GANTT =================== */
 const MONTHS=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];
 $("#gmonths").innerHTML=MONTHS.map(m=>`<span>${m}</span>`).join("");
-const todayPct=(doy("09/06")/YEAR_DAYS)*100;
+const todayPct=(doy("07/07")/YEAR_DAYS)*100;
 $("#gantt-rows").innerHTML=PROJ.map(p=>{
   const l=(doy(p.ini)/YEAR_DAYS)*100, w=((doy(p.fim)-doy(p.ini))/YEAR_DAYS)*100;
   return `<div class="grow">
@@ -973,24 +869,19 @@ $("#gantt-leg").innerHTML=Object.entries(CAT).map(([n,c])=>`<span><i style="back
 /* =================== ALERTS =================== */
 $("#alerts").innerHTML=ALERTS.map(a=>`<div class="card alert reveal"><div class="mo">${a[0]}</div><p>${a[1]}</p></div>`).join("");
 
-/* =================== OS MAIS ENVOLVIDOS =================== */
+/* =================== CARGA POR FACILITADOR =================== */
 const FACS={};
-PROJ.forEach(p=>{p.facil.split("·").map(s=>s.trim().replace(/\s*\(.*\)$/,"")).forEach(f=>{
-  if(/Coordenador|Time 49/i.test(f) || !f){return;}
+PROJ.forEach(p=>{p.facil.split("·").map(s=>s.trim()).forEach(f=>{
+  if(/Coordenador/i.test(f)){return;}
   FACS[f]=(FACS[f]||0)+1;});});
-/* Gabriel Boff (Produto & Tech) atua nos bastidores no mesmo volume do Maurício */
-FACS["Gabriel Boff"]=FACS["Maurício Moraes"]||2;
-/* Rafael Peck — alta participação, quase no nível do Tiago */
-FACS["Rafael Peck"]=Math.max(FACS["Rafael Peck"]||0,(FACS["Tiago Toigo"]||1)-1);
-/* Tamara Moraes — líder de CS, participação próxima à do Maicon Douglas */
-FACS["Tamara Moraes"]=FACS["Maicon Douglas"]||4;
 const facArr=Object.entries(FACS).sort((a,b)=>b[1]-a[1]);
 const maxF=facArr[0][1];
-const FROLE={"Tiago Toigo":"Direção / Facilitação","Victor Motta":"Head de Produto / Facilitação","Leandro Piazza":"CEO / Facilitação","Marcelo Camara":"49 Ventures","Maicon Douglas":"Produto & Tech","Maurício Moraes":"Produto & Tech","Gabriel Boff":"Produto & Tech","Tamara Moraes":"Customer Success (líder)","Rafael Peck":"Coordenação institucional","Alan Nascimento":"Gestor Comercial","Diego Moeller":"Mentor","Giba Lopes":"Mentor"};
-$("#load").innerHTML=facArr.map(([f,n],i)=>`
-  <div class="lrow reveal ${i<3?'hot':''}">
+const FROLE={"Tiago Toigo":"Direção / Facilitação","Victor Motta":"Head de Produto / Facilitação","Leandro Piazza":"CEO / Facilitação","Marcelo Camara":"49 Ventures","Maicon Douglas":"Produto & Tech","Maurício Moraes":"Produto & Tech","Rafael Peck":"Coordenação institucional","Diego Moeller":"Mentor","Giba Lopes":"Mentor"};
+$("#load").innerHTML=facArr.map(([f,n])=>`
+  <div class="lrow reveal ${n>=5?'hot':''}">
     <div class="nm">${f}<small>${FROLE[f]||""}</small></div>
     <div class="lbar"><i style="width:${(n/maxF)*100}%"></i></div>
+    <div class="cn">${n}</div>
   </div>`).join("");
 
 /* =================== MATRIZ TIME × PROJETO =================== */
